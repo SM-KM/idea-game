@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://6gn25wmmkopa"]
+
+[node name="Game" type="Node2D"]
+
+[node name="GameManager" type="Node" parent="."]
+
+[node name="SoundManager" type="Node" parent="GameManager"]
+
+[node name="Environment" type="Node" parent="."]
+
+[node name="Backgrounds" type="Node" parent="Environment"]
+
+[node name="Background" type="TileMapLayer" parent="Environment"]
+
+[node name="Mid" type="TileMapLayer" parent="Environment"]
+
+[node name="Foreground" type="TileMapLayer" parent="Environment"]
