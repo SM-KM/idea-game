@@ -1,3 +1,322 @@
-[gd_scene format=3 uid="uid://cwbjbjkjrm1k6"]
+[gd_scene load_steps=68 format=3 uid="uid://cwbjbjkjrm1k6"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_qnwkt"]
+[ext_resource type="Texture2D" uid="uid://cg6gucybjyikq" path="res://assets/gothicvania church files/SPRITES/player/sprites/crouch1.png" id="2_fgk3p"]
+[ext_resource type="Texture2D" uid="uid://c8t011vgx02ad" path="res://assets/gothicvania church files/SPRITES/player/sprites/idle1.png" id="2_xxmf5"]
+[ext_resource type="Texture2D" uid="uid://blsqq72osagyo" path="res://assets/gothicvania church files/SPRITES/player/sprites/idle2.png" id="3_0q46h"]
+[ext_resource type="Texture2D" uid="uid://w87406k37lkg" path="res://assets/gothicvania church files/SPRITES/player/sprites/crouch2.png" id="3_a10bf"]
+[ext_resource type="Texture2D" uid="uid://bv60due0rdmpy" path="res://assets/gothicvania church files/SPRITES/player/sprites/crouch-kick1.png" id="4_f8b74"]
+[ext_resource type="Texture2D" uid="uid://fmwvhd8spial" path="res://assets/gothicvania church files/SPRITES/player/sprites/idle3.png" id="4_iwgf2"]
+[ext_resource type="Texture2D" uid="uid://cc8pw7qx42lfe" path="res://assets/gothicvania church files/SPRITES/player/sprites/flying-kick1.png" id="4_jjvj5"]
+[ext_resource type="Texture2D" uid="uid://cdo5q50psev06" path="res://assets/gothicvania church files/SPRITES/player/sprites/flying-kick2.png" id="5_51lgx"]
+[ext_resource type="Texture2D" uid="uid://vyw5m6wq3s15" path="res://assets/gothicvania church files/SPRITES/player/sprites/crouch-kick2.png" id="5_ic3vb"]
+[ext_resource type="Texture2D" uid="uid://bo76xfucgpahm" path="res://assets/gothicvania church files/SPRITES/player/sprites/idle4.png" id="5_slx1w"]
+[ext_resource type="Texture2D" uid="uid://c5vnkbhihxqm7" path="res://assets/gothicvania church files/SPRITES/player/sprites/jump1.png" id="6_grvay"]
+[ext_resource type="Texture2D" uid="uid://basicuffq10oe" path="res://assets/gothicvania church files/SPRITES/player/sprites/crouch-kick3.png" id="6_sgbin"]
+[ext_resource type="Texture2D" uid="uid://jmcdhtjjpcaq" path="res://assets/gothicvania church files/SPRITES/player/sprites/jump2.png" id="7_03vau"]
+[ext_resource type="Texture2D" uid="uid://b3gcy3qtt1il" path="res://assets/gothicvania church files/SPRITES/player/sprites/crouch-kick4.png" id="7_dvd5y"]
+[ext_resource type="Texture2D" uid="uid://gv10t2duo2v7" path="res://assets/gothicvania church files/SPRITES/player/sprites/walk1.png" id="8_3fiuy"]
+[ext_resource type="Texture2D" uid="uid://wg7om6a8byrj" path="res://assets/gothicvania church files/SPRITES/player/sprites/crouch-kick5.png" id="8_cuim3"]
+[ext_resource type="Texture2D" uid="uid://dcgiadv62bl4p" path="res://assets/gothicvania church files/SPRITES/player/sprites/walk2.png" id="9_4wxvq"]
+[ext_resource type="Texture2D" uid="uid://woofgiygblbd" path="res://assets/gothicvania church files/SPRITES/player/sprites/kick1.png" id="10_1i2no"]
+[ext_resource type="Texture2D" uid="uid://cfna12j4ar7ih" path="res://assets/gothicvania church files/SPRITES/player/sprites/punch1.png" id="10_fxwf1"]
+[ext_resource type="Texture2D" uid="uid://bebn56w1llgwv" path="res://assets/gothicvania church files/SPRITES/player/sprites/walk3.png" id="10_gltrl"]
+[ext_resource type="Texture2D" uid="uid://b2koq18xjkd7k" path="res://assets/gothicvania church files/SPRITES/player/sprites/walk4.png" id="11_77n6r"]
+[ext_resource type="Texture2D" uid="uid://dtjdhquju2eoc" path="res://assets/gothicvania church files/SPRITES/player/sprites/punch2.png" id="11_i11gm"]
+[ext_resource type="Texture2D" uid="uid://bsf0hjekb4b5q" path="res://assets/gothicvania church files/SPRITES/player/sprites/kick2.png" id="11_xseg5"]
+[ext_resource type="Texture2D" uid="uid://cmtlove65rgp7" path="res://assets/gothicvania church files/SPRITES/player/sprites/punch3.png" id="12_fke1u"]
+[ext_resource type="Texture2D" uid="uid://52d20t1dx4yn" path="res://assets/gothicvania church files/SPRITES/player/sprites/kick3.png" id="12_k1t6s"]
+[ext_resource type="Texture2D" uid="uid://jnt6hh5t4tsn" path="res://assets/gothicvania church files/SPRITES/player/sprites/walk5.png" id="12_v2qxi"]
+[ext_resource type="Texture2D" uid="uid://c6njgg8evul67" path="res://assets/gothicvania church files/SPRITES/player/sprites/punch4.png" id="13_fordu"]
+[ext_resource type="Texture2D" uid="uid://cm8pgxijgkhsb" path="res://assets/gothicvania church files/SPRITES/player/sprites/kick4.png" id="13_hgigl"]
+[ext_resource type="Texture2D" uid="uid://0gnftllevkkt" path="res://assets/gothicvania church files/SPRITES/player/sprites/walk6.png" id="13_t8s1f"]
+[ext_resource type="Texture2D" uid="uid://cjqa5wby35ksh" path="res://assets/gothicvania church files/SPRITES/player/sprites/punch5.png" id="14_g3hbn"]
+[ext_resource type="Texture2D" uid="uid://dhvnmbawoxvji" path="res://assets/gothicvania church files/SPRITES/player/sprites/kick5.png" id="14_qron5"]
+[ext_resource type="Texture2D" uid="uid://4nr06qn6o0bf" path="res://assets/gothicvania church files/SPRITES/player/sprites/punch6.png" id="15_eval2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1p1c1"]
+atlas = ExtResource("2_fgk3p")
+region = Rect2(0, 0, 82, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w3mi8"]
+atlas = ExtResource("3_a10bf")
+region = Rect2(0, 0, 82, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mvrs3"]
+atlas = ExtResource("4_f8b74")
+region = Rect2(0, 0, 82, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vn0l5"]
+atlas = ExtResource("5_ic3vb")
+region = Rect2(0, 0, 82, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rux62"]
+atlas = ExtResource("6_sgbin")
+region = Rect2(0, 0, 82, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b5y74"]
+atlas = ExtResource("7_dvd5y")
+region = Rect2(0, 0, 82, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hxqrh"]
+atlas = ExtResource("8_cuim3")
+region = Rect2(0, 0, 82, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iye1d"]
+atlas = ExtResource("4_jjvj5")
+region = Rect2(0, 0, 82, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yb1jx"]
+atlas = ExtResource("5_51lgx")
+region = Rect2(0, 0, 82, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_81qel"]
+atlas = ExtResource("2_xxmf5")
+region = Rect2(0, 0, 82, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0qbld"]
+atlas = ExtResource("3_0q46h")
+region = Rect2(0, 0, 82, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v5cls"]
+atlas = ExtResource("4_iwgf2")
+region = Rect2(0, 0, 82, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sgoir"]
+atlas = ExtResource("5_slx1w")
+region = Rect2(0, 0, 82, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6y7o8"]
+atlas = ExtResource("6_grvay")
+region = Rect2(0, 0, 82, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fpbad"]
+atlas = ExtResource("7_03vau")
+region = Rect2(0, 0, 82, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0l2ai"]
+atlas = ExtResource("10_1i2no")
+region = Rect2(0, 0, 82, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vql7p"]
+atlas = ExtResource("11_xseg5")
+region = Rect2(0, 0, 82, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xmx31"]
+atlas = ExtResource("12_k1t6s")
+region = Rect2(0, 0, 82, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u3emy"]
+atlas = ExtResource("13_hgigl")
+region = Rect2(0, 0, 82, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_10ume"]
+atlas = ExtResource("14_qron5")
+region = Rect2(0, 0, 82, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qg36f"]
+atlas = ExtResource("10_fxwf1")
+region = Rect2(0, 0, 82, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nplgp"]
+atlas = ExtResource("11_i11gm")
+region = Rect2(0, 0, 82, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v0n68"]
+atlas = ExtResource("12_fke1u")
+region = Rect2(0, 0, 82, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d405g"]
+atlas = ExtResource("13_fordu")
+region = Rect2(0, 0, 82, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_33k4x"]
+atlas = ExtResource("14_g3hbn")
+region = Rect2(0, 0, 82, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m1srx"]
+atlas = ExtResource("15_eval2")
+region = Rect2(0, 0, 82, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5wmrc"]
+atlas = ExtResource("8_3fiuy")
+region = Rect2(0, 0, 82, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wg5d2"]
+atlas = ExtResource("9_4wxvq")
+region = Rect2(0, 0, 82, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i11we"]
+atlas = ExtResource("10_gltrl")
+region = Rect2(0, 0, 82, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wv0nc"]
+atlas = ExtResource("11_77n6r")
+region = Rect2(0, 0, 82, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hirmi"]
+atlas = ExtResource("12_v2qxi")
+region = Rect2(0, 0, 82, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qi124"]
+atlas = ExtResource("13_t8s1f")
+region = Rect2(0, 0, 82, 60)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p0fvt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1p1c1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w3mi8")
+}],
+"loop": true,
+"name": &"crouch",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mvrs3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vn0l5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rux62")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b5y74")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hxqrh")
+}],
+"loop": false,
+"name": &"crouch_kick",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iye1d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yb1jx")
+}],
+"loop": true,
+"name": &"flykick",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_81qel")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0qbld")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v5cls")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sgoir")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6y7o8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fpbad")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0l2ai")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vql7p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xmx31")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u3emy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_10ume")
+}],
+"loop": false,
+"name": &"kick",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qg36f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nplgp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v0n68")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d405g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_33k4x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m1srx")
+}],
+"loop": false,
+"name": &"punch",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5wmrc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wg5d2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i11we")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wv0nc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hirmi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qi124")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c7yrd"]
+size = Vector2(21, 38)
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
+z_index = 5
+script = ExtResource("1_qnwkt")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_p0fvt")
+animation = &"crouch_kick"
+autoplay = "idle"
+frame = 4
+frame_progress = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 11)
+shape = SubResource("RectangleShape2D_c7yrd")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
