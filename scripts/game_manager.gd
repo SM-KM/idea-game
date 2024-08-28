@@ -17,3 +17,5 @@ func createDemon(pos: Vector2, zIndex: int):
 func ReducePlayerHealth(amount):
 	player_health -= amount
 	print(player_health)
+
+

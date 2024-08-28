@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dwnglx6c16sxs"]
+
+[ext_resource type="Script" path="res://scripts/flippable_shape.gd" id="1_ubhb0"]
+
+[node name="FlippableShape" type="CollisionShape2D"]
+script = ExtResource("1_ubhb0")
