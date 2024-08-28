@@ -177,11 +177,11 @@ tile_set = SubResource("TileSet_mvvoi")
 [node name="Foreground" type="TileMapLayer" parent="Environment"]
 
 [node name="Player" parent="." instance=ExtResource("2_7bte5")]
-position = Vector2(-309, -47)
+position = Vector2(-333, -90)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(2, 2)
 
 [node name="Demon" parent="." instance=ExtResource("5_5om8d")]
 z_index = 2
-position = Vector2(-186, -71)
+position = Vector2(-186, -98)

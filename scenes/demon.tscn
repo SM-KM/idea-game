@@ -145,10 +145,10 @@ radius = 94.0213
 
 [node name="Demon" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_tqtab")
-animation = &"attack"
+animation = &"idle"
 autoplay = "idle"
-frame = 10
-frame_progress = 1.0
+frame = 1
+frame_progress = 0.67005
 script = ExtResource("2_t355s")
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]

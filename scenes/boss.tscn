@@ -1,5 +1,6 @@
-[gd_scene load_steps=14 format=3 uid="uid://bm0y6sii4432x"]
+[gd_scene load_steps=16 format=3 uid="uid://bm0y6sii4432x"]
 
+[ext_resource type="Script" path="res://scripts/boss.gd" id="1_nvcof"]
 [ext_resource type="Texture2D" uid="uid://c5tejga0j888x" path="res://assets/Agis/Agis.png" id="1_uidmt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fqjfa"]
@@ -83,16 +84,22 @@ animations = [{
 "texture": SubResource("AtlasTexture_aetx5")
 }],
 "loop": true,
-"name": &"default",
+"name": &"idle",
 "speed": 12.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hjo4m"]
+size = Vector2(38, 109.5)
+
 [node name="Boss" type="CharacterBody2D"]
+script = ExtResource("1_nvcof")
 
-[node name="RigidBody2D" type="RigidBody2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="RigidBody2D"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_xii2k")
-frame_progress = 0.742354
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.41884
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 52.75)
+shape = SubResource("RectangleShape2D_hjo4m")

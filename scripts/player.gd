@@ -1,6 +1,8 @@
 extends CharacterBody2D
 
-@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var player_sprite: Sprite2D = $PlayerSprite
+@onready var animation_player: AnimationPlayer = $PlayerSprite/AnimationPlayer
+@onready var attack_area_collider: CollisionShape2D = $PlayerSprite/Attack_area/attack_area_collider
 
 var speedUpdated = false
 var SPEED = 140.0
@@ -22,7 +24,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 		if Input.is_action_just_pressed("kick"):
-			animated_sprite.play("flykick")
+			pass
 	
 	if Input.is_action_just_released("crouch"):
 		SPEED = defaultSpeed
@@ -33,54 +35,53 @@ func _physics_process(delta: float) -> void:
 
 	# Flip the Sprite
 	if direction > 0:
-		animated_sprite.flip_h = false
+		player_sprite.flip_h = false
 	elif direction < 0:
-		animated_sprite.flip_h = true
+		player_sprite.flip_h = true
 		
 		
 	if is_on_floor():			
 		if Input.is_action_just_released("punch"):
-			animated_sprite.play("punch")
+			pass
 			
 		if Input.is_action_just_released("kick"):
-			animated_sprite.play("kick")
+			animation_player.play("kick")
 		
 		if direction == 0:
 			if Input.is_action_pressed("crouch"):
 				if Input.is_action_just_pressed("kick"):
-					animated_sprite.play("crouch_kick")
+					pass
 				else:
-					if !animated_sprite.animation in ignoreCrouch:
-						animated_sprite.play("crouch")
-						if not(speedUpdated):
-							SPEED += 100
-							speedUpdated = true
+					pass
+					# animated_sprite.play("crouch")
 			else:
-				if !animated_sprite.animation in ignoreIdle:
-					animated_sprite.play("idle") 
+				pass
+				# animation_player.play("idle") 
 					
 		else:
 			if Input.is_action_pressed("punch"):
-				animated_sprite.play("punch")
+				pass
+				# animated_sprite.play("punch")
 			
 			if Input.is_action_pressed("crouch"):
 				if Input.is_action_just_pressed("kick"):
-					animated_sprite.play("crouch_kick")
+					pass
+					# animated_sprite.play("crouch_kick")
 				else:
-					if !animated_sprite.animation in ignoreCrouch:
-						animated_sprite.play("crouch")
-						if not(speedUpdated):
-							SPEED += 100
-							speedUpdated = true
+					pass
+					# animated_sprite.play("crouch")
 			else:
-				if !animated_sprite.animation in ignoreWalk:
-					animated_sprite.play("walk")
+				pass
+				# animated_sprite.play("walk")
+					
 	else:
 		if Input.is_action_just_pressed("kick"):
-			animated_sprite.play("flykick")
+			pass
+			# animated_sprite.play("flykick")
 		else:
-			if !animated_sprite.animation in ignoreJump:
-				animated_sprite.play("jump")
+			pass
+			# animated_sprite.play("jump")
+				
 
 	if direction:
 		velocity.x = direction * SPEED
@@ -88,8 +89,4 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
-
-
-func _on_animated_sprite_2d_animation_finished() -> void:
-	animated_sprite.play("idle")
 		
