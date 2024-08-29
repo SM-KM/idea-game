@@ -1,6 +1,7 @@
 extends Node
 
 @export var player_health = 100
+@export var playerName = "Player"
 
 func _ready() -> void:
 	pass

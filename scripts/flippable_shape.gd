@@ -6,7 +6,6 @@ class_name FlippableShape
 		default_position = new_position
 		position = new_position
 
-
 var current_flip_value: bool
 
 func _on_sprite_flip(flip_value):

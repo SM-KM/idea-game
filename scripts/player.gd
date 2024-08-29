@@ -3,15 +3,18 @@ extends CharacterBody2D
 @onready var player_sprite: FlippableSprite = $FlippableSprite
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var player_collision: CollisionShape2D = $PlayerCollider
+@onready var flippable_shape: FlippableShape = $HitboxComponent/FlippableShape
 
 var SPEED = 140.0
 var defaultSpeed = 140.0
 const JUMP_VELOCITY = -300.0
 var speedUpdated: bool = false
+var lastFlippedValue = false
+var ignoreIdle = ["kick", "kick_left", "punch",  "punch_left"]
+var ignoreWalk = ["crouch", "crouch_kick", "crouch_kick_left"]
+var ignoreCrouch = ["crouch_kick", "crouch_kick_left"]
+var ignoreJump = ["flykick", "flykick_left"]
 
-func d(h):
-	print(h)
-	
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
@@ -34,21 +37,46 @@ func _physics_process(delta: float) -> void:
 	elif direction < 0:
 		player_sprite.flipped = true
 		
-	if direction == 0:
-		animation_player.play("idle")
-		if Input.is_action_pressed("crouch"):			
-			animation_player.play("crouch")
-			if not(speedUpdated):
-							SPEED += 100
-							speedUpdated = true
 	
 	if is_on_floor():
+		if Input.is_action_just_released("kick"):
+			animateDependingOnFlippedState("kick_left", "kick")
+				
+		if Input.is_action_just_released("punch"):
+			animateDependingOnFlippedState("punch_left", "punch")
+
 		if direction == 0:
-			pass
+			if Input.is_action_pressed("crouch"):			
+				if Input.is_action_just_released("kick"):
+					animateDependingOnFlippedState("crouch_kick_left", "crouch_kick")	
+				else:
+					if !animation_player.current_animation in ignoreCrouch:
+						animation_player.play("crouch")
+						if not(speedUpdated):
+							SPEED += 100
+							speedUpdated = true
+					
+			else:
+				if !animation_player.current_animation in ignoreIdle:
+					animation_player.play("idle")
 		else:
-			animation_player.play("walk")
+			if Input.is_action_pressed("crouch"):	
+				if Input.is_action_pressed("kick"):	
+					animation_player.play("crouch_kick")	
+				else:
+					animation_player.play("crouch")
+					if not(speedUpdated):
+						SPEED += 100
+						speedUpdated = true
+			else:
+				if !animation_player.current_animation in ignoreWalk:
+					animation_player.play("walk")
 	else:
-		animation_player.play("jump")
+		if Input.is_action_pressed("kick"):
+			animateDependingOnFlippedState("flykick_left", "flykick")
+		else:
+			if !animation_player.current_animation in ignoreJump:
+				animation_player.play("jump") 
 	
 	if direction:
 		velocity.x = direction * SPEED
@@ -56,4 +84,11 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
+	
+	
+func animateDependingOnFlippedState(right, left):
+	if player_sprite.flipped:
+		animation_player.play(right)
+	else:
+		animation_player.play(left)
 		

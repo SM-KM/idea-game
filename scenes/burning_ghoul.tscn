@@ -1,0 +1,217 @@
+[gd_scene load_steps=24 format=3 uid="uid://c1sydo80htnln"]
+
+[ext_resource type="Script" path="res://scripts/burning_ghoul.gd" id="1_jul0o"]
+[ext_resource type="Texture2D" uid="uid://brxd0mknabyj0" path="res://assets/gothicvania church files/SPRITES/burning-ghoul/sprites/v1/burning-ghoul-1.png" id="1_usgru"]
+[ext_resource type="Texture2D" uid="uid://dj47txiifpvle" path="res://assets/gothicvania church files/SPRITES/burning-ghoul/sprites/v1/burning-ghoul-2.png" id="2_6hytm"]
+[ext_resource type="Script" path="res://scripts/explosion_radius.gd" id="2_axxtj"]
+[ext_resource type="Texture2D" uid="uid://ctpkwfu18syil" path="res://assets/gothicvania church files/SPRITES/burning-ghoul/sprites/v1/burning-ghoul-3.png" id="3_fftxm"]
+[ext_resource type="Texture2D" uid="uid://6gs4sf3ulm2y" path="res://assets/gothicvania church files/SPRITES/burning-ghoul/sprites/v1/burning-ghoul-4.png" id="4_kf6xy"]
+[ext_resource type="Texture2D" uid="uid://dt6pvjkvbpftl" path="res://assets/gothicvania church files/SPRITES/burning-ghoul/sprites/v1/burning-ghoul-5.png" id="5_0wgwg"]
+[ext_resource type="Texture2D" uid="uid://cdox2qx7qmixa" path="res://assets/gothicvania church files/SPRITES/burning-ghoul/sprites/v1/burning-ghoul-6.png" id="6_n7p5r"]
+[ext_resource type="Texture2D" uid="uid://bjkgvly6ofsdl" path="res://assets/gothicvania church files/SPRITES/burning-ghoul/sprites/v1/burning-ghoul-8.png" id="7_ucul5"]
+[ext_resource type="Texture2D" uid="uid://cdo6gbd5lsebd" path="res://assets/gothicvania church files/SPRITES/fx/enemy-death/enemy-death-sprites/enemy-death2.png" id="8_w81jm"]
+[ext_resource type="Texture2D" uid="uid://bnixd2ao5vfn8" path="res://assets/gothicvania church files/SPRITES/fx/enemy-death/enemy-death-sprites/enemy-death3.png" id="9_e761w"]
+[ext_resource type="Texture2D" uid="uid://ioe4h6leqkef" path="res://assets/gothicvania church files/SPRITES/fx/enemy-death/enemy-death-sprites/enemy-death4.png" id="10_6h43u"]
+[ext_resource type="Texture2D" uid="uid://c2cjpjn6pk28x" path="res://assets/gothicvania church files/SPRITES/fx/enemy-death/enemy-death-sprites/enemy-death5.png" id="11_ojfuy"]
+[ext_resource type="Texture2D" uid="uid://de7o34ktvjw0q" path="res://assets/gothicvania church files/SPRITES/fx/enemy-death/enemy-death-sprites/enemy-death6.png" id="12_bysih"]
+[ext_resource type="Texture2D" uid="uid://d2hhqkp2hjdqy" path="res://assets/gothicvania church files/SPRITES/fx/enemy-death/enemy-death-sprites/enemy-death7.png" id="13_6435v"]
+[ext_resource type="Texture2D" uid="uid://dex8oqc4dxgen" path="res://assets/gothicvania church files/SPRITES/fx/enemy-death/enemy-death-sprites/enemy-death8.png" id="14_r3eu2"]
+[ext_resource type="Texture2D" uid="uid://jdmpfbmo1w4m" path="res://assets/gothicvania church files/SPRITES/fx/enemy-death/enemy-death-sprites/enemy-death9.png" id="15_tij7k"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_324v4"]
+radius = 45.0111
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fpio5"]
+size = Vector2(26, 40)
+
+[sub_resource type="Animation" id="Animation_4lh11"]
+resource_name = "run"
+length = 0.65
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RigidBody2D/Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("1_usgru"), ExtResource("2_6hytm"), ExtResource("3_fftxm"), ExtResource("4_kf6xy"), ExtResource("5_0wgwg"), ExtResource("6_n7p5r"), ExtResource("7_ucul5")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RigidBody2D/Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RigidBody2D/Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RigidBody2D/Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 0, 0, 0, 0, 0, 0]
+}
+
+[sub_resource type="Animation" id="Animation_521ty"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RigidBody2D/Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_usgru")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RigidBody2D/Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RigidBody2D/Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RigidBody2D/Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_rapik"]
+resource_name = "explote"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RigidBody2D/Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("8_w81jm"), ExtResource("9_e761w"), ExtResource("10_6h43u"), ExtResource("11_ojfuy"), ExtResource("12_bysih"), ExtResource("13_6435v"), ExtResource("14_r3eu2"), ExtResource("15_tij7k")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RigidBody2D/Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RigidBody2D/Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RigidBody2D/Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 0, 0, 0, 0, 0, 0, 0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nb17f"]
+_data = {
+"RESET": SubResource("Animation_521ty"),
+"explote": SubResource("Animation_rapik"),
+"run": SubResource("Animation_4lh11")
+}
+
+[node name="BurningGhoul" type="Node2D"]
+script = ExtResource("1_jul0o")
+
+[node name="EnemyManager" type="Node" parent="."]
+
+[node name="ExplosionRadius" type="Area2D" parent="."]
+script = ExtResource("2_axxtj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExplosionRadius"]
+position = Vector2(-2, 9)
+shape = SubResource("CircleShape2D_324v4")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
+texture = ExtResource("1_usgru")
+
+[node name="Collider" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2(-3, 10)
+shape = SubResource("RectangleShape2D_fpio5")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="RigidBody2D"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_nb17f")
+}
+
+[connection signal="body_entered" from="ExplosionRadius" to="." method="_on_explosion_radius_body_entered"]
