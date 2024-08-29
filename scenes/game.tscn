@@ -177,6 +177,7 @@ tile_set = SubResource("TileSet_mvvoi")
 [node name="Foreground" type="TileMapLayer" parent="Environment"]
 
 [node name="Player" parent="." instance=ExtResource("2_7bte5")]
+unique_name_in_owner = true
 position = Vector2(-333, -90)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]

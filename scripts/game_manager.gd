@@ -3,7 +3,7 @@ extends Node
 @export var player_health = 100
 
 func _ready() -> void:
-	createDemon(Vector2(0, 0), 5)
+	pass
 
 # enemies instances
 func createDemon(pos: Vector2, zIndex: int):
@@ -17,5 +17,3 @@ func createDemon(pos: Vector2, zIndex: int):
 func ReducePlayerHealth(amount):
 	player_health -= amount
 	print(player_health)
-
-
