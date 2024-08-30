@@ -24,59 +24,6 @@ radius = 45.0111
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fpio5"]
 size = Vector2(26, 40)
 
-[sub_resource type="Animation" id="Animation_4lh11"]
-resource_name = "run"
-length = 0.65
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("RigidBody2D/Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [ExtResource("1_usgru"), ExtResource("2_6hytm"), ExtResource("3_fftxm"), ExtResource("4_kf6xy"), ExtResource("5_0wgwg"), ExtResource("6_n7p5r"), ExtResource("7_ucul5")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("RigidBody2D/Sprite2D:hframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("RigidBody2D/Sprite2D:vframes")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("RigidBody2D/Sprite2D:frame")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 0, 0, 0, 0, 0, 0]
-}
-
 [sub_resource type="Animation" id="Animation_521ty"]
 length = 0.001
 tracks/0/type = "value"
@@ -180,6 +127,59 @@ tracks/3/keys = {
 "values": [0, 0, 0, 0, 0, 0, 0, 0]
 }
 
+[sub_resource type="Animation" id="Animation_4lh11"]
+resource_name = "run"
+length = 0.65
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RigidBody2D/Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("1_usgru"), ExtResource("2_6hytm"), ExtResource("3_fftxm"), ExtResource("4_kf6xy"), ExtResource("5_0wgwg"), ExtResource("6_n7p5r"), ExtResource("7_ucul5")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RigidBody2D/Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RigidBody2D/Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RigidBody2D/Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 0, 0, 0, 0, 0, 0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nb17f"]
 _data = {
 "RESET": SubResource("Animation_521ty"),
@@ -192,14 +192,14 @@ script = ExtResource("1_jul0o")
 
 [node name="EnemyManager" type="Node" parent="."]
 
-[node name="ExplosionRadius" type="Area2D" parent="."]
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+
+[node name="ExplosionRadius" type="Area2D" parent="RigidBody2D"]
 script = ExtResource("2_axxtj")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ExplosionRadius"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D/ExplosionRadius"]
 position = Vector2(-2, 9)
 shape = SubResource("CircleShape2D_324v4")
-
-[node name="RigidBody2D" type="RigidBody2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
 texture = ExtResource("1_usgru")
@@ -214,4 +214,4 @@ libraries = {
 "": SubResource("AnimationLibrary_nb17f")
 }
 
-[connection signal="body_entered" from="ExplosionRadius" to="." method="_on_explosion_radius_body_entered"]
+[connection signal="body_entered" from="RigidBody2D/ExplosionRadius" to="." method="_on_explosion_radius_body_entered"]

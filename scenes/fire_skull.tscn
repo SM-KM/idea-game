@@ -1,0 +1,137 @@
+[gd_scene load_steps=7 format=3 uid="uid://c755nrftgndn"]
+
+[ext_resource type="Script" path="res://scripts/fire_skull.gd" id="1_6kiw5"]
+[ext_resource type="Texture2D" uid="uid://cja65i2qnobe5" path="res://assets/gothicvania patreon collection/Fire-Skull-Files/PNG/fire-skull.png" id="1_xdfoq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_as1bk"]
+size = Vector2(36, 38)
+
+[sub_resource type="Animation" id="Animation_2g1n2"]
+resource_name = "idle"
+length = 0.42
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_xdfoq")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2, 0.266667, 0.333333, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6]
+}
+
+[sub_resource type="Animation" id="Animation_mpku4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_xdfoq")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_848r2"]
+_data = {
+"RESET": SubResource("Animation_mpku4"),
+"idle": SubResource("Animation_2g1n2")
+}
+
+[node name="FireSkull" type="Node2D"]
+
+[node name="FireSkull" type="CharacterBody2D" parent="."]
+script = ExtResource("1_6kiw5")
+
+[node name="Sprite2D" type="Sprite2D" parent="FireSkull"]
+position = Vector2(1, -7)
+scale = Vector2(0.526042, 0.526042)
+texture = ExtResource("1_xdfoq")
+hframes = 8
+
+[node name="SkullCollider" type="CollisionShape2D" parent="FireSkull"]
+position = Vector2(-1, -1)
+shape = SubResource("RectangleShape2D_as1bk")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="FireSkull"]
+libraries = {
+"": SubResource("AnimationLibrary_848r2")
+}
+autoplay = "idle"
