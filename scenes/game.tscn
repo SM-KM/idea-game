@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://6gn25wmmkopa"]
+[gd_scene load_steps=15 format=4 uid="uid://6gn25wmmkopa"]
 
 [ext_resource type="Texture2D" uid="uid://5yht68pxcvdr" path="res://assets/gothicvania church/assets/environment/tileset.png" id="1_fgt7n"]
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_xs7hh"]
@@ -9,6 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://c1sydo80htnln" path="res://scenes/burning_ghoul.tscn" id="6_l4uj3"]
 [ext_resource type="PackedScene" uid="uid://bxhyr6rglggvs" path="res://scenes/ghost.tscn" id="7_olrdf"]
 [ext_resource type="PackedScene" uid="uid://c755nrftgndn" path="res://scenes/fire_skull.tscn" id="8_j044c"]
+[ext_resource type="PackedScene" uid="uid://dg00cf0lksfqq" path="res://scenes/hell_beast.tscn" id="10_8f3na"]
+[ext_resource type="PackedScene" uid="uid://dc2u07hjbdw40" path="res://scenes/hell_bound.tscn" id="11_ncb4t"]
+[ext_resource type="PackedScene" uid="uid://0hr871v8n0n5" path="res://scenes/nightmare.tscn" id="12_3tj5l"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vm4qq"]
 texture = ExtResource("1_fgt7n")
@@ -207,3 +210,12 @@ position = Vector2(100, -97)
 [node name="FireSkull" parent="Enemies" instance=ExtResource("8_j044c")]
 position = Vector2(-609, -70)
 scale = Vector2(-1, 1)
+
+[node name="HellBeast" parent="Enemies" instance=ExtResource("10_8f3na")]
+position = Vector2(-669, -78)
+
+[node name="HellBound" parent="Enemies" instance=ExtResource("11_ncb4t")]
+position = Vector2(-543, -55)
+
+[node name="Nightmare" parent="Enemies" instance=ExtResource("12_3tj5l")]
+position = Vector2(0, -75)
