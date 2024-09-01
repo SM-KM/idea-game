@@ -1,69 +1,30 @@
-[gd_scene load_steps=7 format=3 uid="uid://c755nrftgndn"]
+[gd_scene load_steps=24 format=3 uid="uid://c755nrftgndn"]
 
 [ext_resource type="Script" path="res://scripts/fire_skull.gd" id="1_6kiw5"]
 [ext_resource type="Texture2D" uid="uid://cja65i2qnobe5" path="res://assets/gothicvania patreon collection/Fire-Skull-Files/PNG/fire-skull.png" id="1_xdfoq"]
+[ext_resource type="Script" path="res://scripts/enemy_controller.gd" id="1_ynd66"]
+[ext_resource type="Script" path="res://scripts/flippableSprite.gd" id="3_2pdti"]
+[ext_resource type="Script" path="res://scripts/hitbox_component.gd" id="4_vvlvk"]
+[ext_resource type="Script" path="res://scripts/flippable_shape.gd" id="5_cejfm"]
+[ext_resource type="Texture2D" uid="uid://cdo6gbd5lsebd" path="res://assets/gothicvania church files/SPRITES/fx/enemy-death/enemy-death-sprites/enemy-death2.png" id="5_v62vu"]
+[ext_resource type="Texture2D" uid="uid://bnixd2ao5vfn8" path="res://assets/gothicvania church files/SPRITES/fx/enemy-death/enemy-death-sprites/enemy-death3.png" id="6_5txpc"]
+[ext_resource type="PackedScene" uid="uid://ceonqfgt2vso7" path="res://scenes/UI/health_bar.tscn" id="7_ng831"]
+[ext_resource type="Texture2D" uid="uid://ioe4h6leqkef" path="res://assets/gothicvania church files/SPRITES/fx/enemy-death/enemy-death-sprites/enemy-death4.png" id="7_rm3t2"]
+[ext_resource type="Texture2D" uid="uid://c2cjpjn6pk28x" path="res://assets/gothicvania church files/SPRITES/fx/enemy-death/enemy-death-sprites/enemy-death5.png" id="8_5hu68"]
+[ext_resource type="Texture2D" uid="uid://de7o34ktvjw0q" path="res://assets/gothicvania church files/SPRITES/fx/enemy-death/enemy-death-sprites/enemy-death6.png" id="9_gbdb6"]
+[ext_resource type="Texture2D" uid="uid://d2hhqkp2hjdqy" path="res://assets/gothicvania church files/SPRITES/fx/enemy-death/enemy-death-sprites/enemy-death7.png" id="10_grdeg"]
+[ext_resource type="Texture2D" uid="uid://dex8oqc4dxgen" path="res://assets/gothicvania church files/SPRITES/fx/enemy-death/enemy-death-sprites/enemy-death8.png" id="11_tuudt"]
+[ext_resource type="Texture2D" uid="uid://jdmpfbmo1w4m" path="res://assets/gothicvania church files/SPRITES/fx/enemy-death/enemy-death-sprites/enemy-death9.png" id="12_q0b2w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_as1bk"]
-size = Vector2(36, 38)
-
-[sub_resource type="Animation" id="Animation_2g1n2"]
-resource_name = "idle"
-length = 0.42
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("1_xdfoq")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:hframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [8]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:vframes")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Sprite2D:frame")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2, 0.266667, 0.333333, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6]
-}
+size = Vector2(36, 43)
 
 [sub_resource type="Animation" id="Animation_mpku4"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/path = NodePath("RigidBody2D/Sprite2D:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -75,7 +36,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/path = NodePath("RigidBody2D/Sprite2D:hframes")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -87,7 +48,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/path = NodePath("RigidBody2D/Sprite2D:vframes")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -99,7 +60,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/path = NodePath("RigidBody2D/Sprite2D:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -108,30 +69,226 @@ tracks/3/keys = {
 "update": 1,
 "values": [0]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("RigidBody2D/Sprite2D:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.526042, 0.526042)]
+}
+
+[sub_resource type="Animation" id="Animation_2g1n2"]
+resource_name = "idle"
+length = 0.45
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RigidBody2D/Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_xdfoq")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RigidBody2D/Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RigidBody2D/Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RigidBody2D/Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2, 0.266667, 0.333333, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("RigidBody2D/Sprite2D:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.526042, 0.526042)]
+}
+
+[sub_resource type="Animation" id="Animation_8mfda"]
+resource_name = "explote"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RigidBody2D/Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("5_v62vu"), ExtResource("6_5txpc"), ExtResource("7_rm3t2"), ExtResource("8_5hu68"), ExtResource("9_gbdb6"), ExtResource("10_grdeg"), ExtResource("11_tuudt"), ExtResource("12_q0b2w")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RigidBody2D/Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [1, 1, 1, 1, 1, 1, 1, 1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RigidBody2D/Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [1, 1, 1, 1, 1, 1, 1, 1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RigidBody2D/Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 0, 0, 0, 0, 0, 0, 0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("RigidBody2D/Sprite2D:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.1, 1.1)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_848r2"]
 _data = {
 "RESET": SubResource("Animation_mpku4"),
+"explote": SubResource("Animation_8mfda"),
 "idle": SubResource("Animation_2g1n2")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_dx3rm"]
+radius = 190.003
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_co4bm"]
+radius = 28.0179
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ii3yl"]
+radius = 17.0
+height = 42.0
+
 [node name="FireSkull" type="Node2D"]
+
+[node name="EnemyController" type="Node" parent="."]
+script = ExtResource("1_ynd66")
+enemyHealth = 20
+max_enemyHealth = 20
+enemySpeed = 160
+enemyDamage = 10
 
 [node name="FireSkull" type="CharacterBody2D" parent="."]
 script = ExtResource("1_6kiw5")
 
-[node name="Sprite2D" type="Sprite2D" parent="FireSkull"]
+[node name="RigidBody2D" type="RigidBody2D" parent="FireSkull"]
+
+[node name="Sprite2D" type="Sprite2D" parent="FireSkull/RigidBody2D"]
 position = Vector2(1, -7)
 scale = Vector2(0.526042, 0.526042)
 texture = ExtResource("1_xdfoq")
 hframes = 8
+script = ExtResource("3_2pdti")
 
-[node name="SkullCollider" type="CollisionShape2D" parent="FireSkull"]
-position = Vector2(-1, -1)
+[node name="SkullCollider" type="CollisionShape2D" parent="FireSkull/RigidBody2D"]
+position = Vector2(-1, 1.5)
 shape = SubResource("RectangleShape2D_as1bk")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="FireSkull"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="FireSkull/RigidBody2D"]
+root_node = NodePath("../..")
 libraries = {
 "": SubResource("AnimationLibrary_848r2")
 }
 autoplay = "idle"
+
+[node name="AwarenessArea" type="Area2D" parent="FireSkull/RigidBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FireSkull/RigidBody2D/AwarenessArea"]
+shape = SubResource("CircleShape2D_dx3rm")
+
+[node name="AttackArea" type="Area2D" parent="FireSkull/RigidBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FireSkull/RigidBody2D/AttackArea"]
+shape = SubResource("CircleShape2D_co4bm")
+debug_color = Color(0.916742, 0.252505, 0.35697, 0.42)
+
+[node name="HitboxComponent" type="Area2D" parent="FireSkull/RigidBody2D"]
+script = ExtResource("4_vvlvk")
+
+[node name="FlippableShape" type="CollisionShape2D" parent="FireSkull/RigidBody2D/HitboxComponent"]
+script = ExtResource("5_cejfm")
+
+[node name="ReceiveHit" type="Area2D" parent="FireSkull/RigidBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FireSkull/RigidBody2D/ReceiveHit"]
+position = Vector2(-1, 1)
+shape = SubResource("CapsuleShape2D_ii3yl")
+debug_color = Color(0.484219, 0.484136, 0.864992, 0.42)
+
+[node name="HealthBar" parent="FireSkull" instance=ExtResource("7_ng831")]
+offset_top = -30.0
+offset_bottom = -26.0
+
+[connection signal="body_entered" from="FireSkull/RigidBody2D/AwarenessArea" to="FireSkull" method="_on_awareness_area_body_entered"]
+[connection signal="body_exited" from="FireSkull/RigidBody2D/AwarenessArea" to="FireSkull" method="_on_awareness_area_body_exited"]
+[connection signal="body_entered" from="FireSkull/RigidBody2D/AttackArea" to="FireSkull" method="_on_attack_area_body_entered"]
+[connection signal="body_exited" from="FireSkull/RigidBody2D/AttackArea" to="FireSkull" method="_on_attack_area_body_exited"]
+[connection signal="area_entered" from="FireSkull/RigidBody2D/ReceiveHit" to="FireSkull" method="_on_receive_hit_area_entered"]

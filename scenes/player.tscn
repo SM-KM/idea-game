@@ -1,6 +1,8 @@
-[gd_scene load_steps=49 format=3 uid="uid://cwbjbjkjrm1k6"]
+[gd_scene load_steps=119 format=3 uid="uid://cwbjbjkjrm1k6"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_qnwkt"]
+[ext_resource type="Script" path="res://scripts/Util/power_up_visual_effect.gd" id="2_nlxkt"]
+[ext_resource type="Texture2D" uid="uid://cidlir3ekf1xx" path="res://assets/Mini Fires 2/5/1.png" id="3_jrkvf"]
 [ext_resource type="Texture2D" uid="uid://osujxc3ja0cy" path="res://assets/gothicvania church files/SPRITES/player/spritesheet/idle.png" id="3_xyqxj"]
 [ext_resource type="Texture2D" uid="uid://gv10t2duo2v7" path="res://assets/gothicvania church files/SPRITES/player/sprites/walk1.png" id="4_p516n"]
 [ext_resource type="Texture2D" uid="uid://cg6gucybjyikq" path="res://assets/gothicvania church files/SPRITES/player/sprites/crouch1.png" id="4_qxt4d"]
@@ -32,40 +34,99 @@
 [ext_resource type="Texture2D" uid="uid://c6njgg8evul67" path="res://assets/gothicvania church files/SPRITES/player/sprites/punch4.png" id="16_u4sk0"]
 [ext_resource type="Texture2D" uid="uid://cjqa5wby35ksh" path="res://assets/gothicvania church files/SPRITES/player/sprites/punch5.png" id="17_38s4r"]
 [ext_resource type="Texture2D" uid="uid://4nr06qn6o0bf" path="res://assets/gothicvania church files/SPRITES/player/sprites/punch6.png" id="18_ml4up"]
+[ext_resource type="Texture2D" uid="uid://cnujfy7ekcctl" path="res://assets/Mini Fires 2/5/19.png" id="21_ib0bg"]
+[ext_resource type="Texture2D" uid="uid://d070sssrpmuy7" path="res://assets/gothicvania church files/SPRITES/player/sprites/hurt1.png" id="31_6kadg"]
+[ext_resource type="Texture2D" uid="uid://6gp6nbhtbbr5" path="res://assets/gothicvania church files/SPRITES/player/sprites/hurt2.png" id="32_y6e6h"]
+[ext_resource type="Texture2D" uid="uid://b23kx5axbvjkg" path="res://assets/Mini Fires 2/6/1.png" id="33_plttg"]
+[ext_resource type="Texture2D" uid="uid://du07fg1v4ayd2" path="res://assets/Mini Fires 2/6/2.png" id="34_yaqng"]
+[ext_resource type="Texture2D" uid="uid://dm6v2k1grp0qp" path="res://assets/Mini Fires 2/6/3.png" id="35_p63db"]
+[ext_resource type="Texture2D" uid="uid://bcdw2wtia4xug" path="res://assets/Mini Fires 2/5/2.png" id="35_urpcd"]
+[ext_resource type="Texture2D" uid="uid://vll76mabhrwi" path="res://assets/Mini Fires 2/6/4.png" id="36_ck1vu"]
+[ext_resource type="Texture2D" uid="uid://dpadjtay14p3k" path="res://assets/Mini Fires 2/5/3.png" id="36_k4s51"]
+[ext_resource type="Texture2D" uid="uid://cmvmyd0djv8ia" path="res://assets/Mini Fires 2/5/4.png" id="37_0kddf"]
+[ext_resource type="Texture2D" uid="uid://pk67kj22euh5" path="res://assets/Mini Fires 2/6/5.png" id="37_tn1bp"]
+[ext_resource type="Texture2D" uid="uid://c4l2aegmpgb4c" path="res://assets/Mini Fires 2/5/5.png" id="38_cqark"]
+[ext_resource type="Texture2D" uid="uid://bl68g0vphc8nr" path="res://assets/Mini Fires 2/6/6.png" id="38_ub6p8"]
+[ext_resource type="Texture2D" uid="uid://mvfjycoxxmkq" path="res://assets/Mini Fires 2/6/7.png" id="39_8d7f6"]
+[ext_resource type="Texture2D" uid="uid://c7kwpwcnwg8ax" path="res://assets/Mini Fires 2/5/6.png" id="39_p5r8r"]
+[ext_resource type="Texture2D" uid="uid://bd67qcw6bwcfi" path="res://assets/Mini Fires 2/5/7.png" id="40_7purm"]
+[ext_resource type="Texture2D" uid="uid://jgihbm2g0fxv" path="res://assets/Mini Fires 2/6/8.png" id="40_qas58"]
+[ext_resource type="Texture2D" uid="uid://h6848rpiud7b" path="res://assets/Mini Fires 2/5/8.png" id="41_74k5y"]
+[ext_resource type="Texture2D" uid="uid://gkrb84aj3iee" path="res://assets/Mini Fires 2/6/9.png" id="41_xs5er"]
+[ext_resource type="Texture2D" uid="uid://d3rfp43lfc11v" path="res://assets/Mini Fires 2/5/9.png" id="42_8ubp6"]
+[ext_resource type="Texture2D" uid="uid://cgigkv4eunpbi" path="res://assets/Mini Fires 2/6/10.png" id="42_yem5t"]
+[ext_resource type="Texture2D" uid="uid://xs6rvgey8yvn" path="res://assets/Mini Fires 2/5/10.png" id="43_8qyiw"]
+[ext_resource type="Texture2D" uid="uid://dbeb367dxbic2" path="res://assets/Mini Fires 2/6/11.png" id="43_8susv"]
+[ext_resource type="Texture2D" uid="uid://dq82pwsq3hxgb" path="res://assets/Mini Fires 2/5/11.png" id="44_jqmpi"]
+[ext_resource type="Texture2D" uid="uid://ch5m2ejo30ldf" path="res://assets/Mini Fires 2/6/12.png" id="44_wj0hs"]
+[ext_resource type="Texture2D" uid="uid://btag6m2mxpsr1" path="res://assets/Mini Fires 2/5/12.png" id="45_jshc5"]
+[ext_resource type="Texture2D" uid="uid://hqnn8dp4l08w" path="res://assets/Mini Fires 2/6/13.png" id="45_pyql4"]
+[ext_resource type="Texture2D" uid="uid://mtn1n1yfux15" path="res://assets/Mini Fires 2/6/14.png" id="46_jiktg"]
+[ext_resource type="Texture2D" uid="uid://oudkwhf711bs" path="res://assets/Mini Fires 2/5/13.png" id="46_pwp5a"]
+[ext_resource type="Texture2D" uid="uid://c57m7spsg7ohe" path="res://assets/Mini Fires 2/5/14.png" id="47_3gyvi"]
+[ext_resource type="Texture2D" uid="uid://blqs38o7meu5r" path="res://assets/Mini Fires 2/6/15.png" id="47_ftfwe"]
+[ext_resource type="Texture2D" uid="uid://bonkjuooocnm1" path="res://assets/Mini Fires 2/5/15.png" id="48_km0td"]
+[ext_resource type="Texture2D" uid="uid://bfma26slg38x8" path="res://assets/Mini Fires 2/6/16.png" id="48_r0jaa"]
+[ext_resource type="Texture2D" uid="uid://c8dncfjsekcb8" path="res://assets/Mini Fires 2/5/16.png" id="49_2b8vn"]
+[ext_resource type="Texture2D" uid="uid://u0i76y5l4rpe" path="res://assets/Mini Fires 2/6/17.png" id="49_7nubw"]
+[ext_resource type="Texture2D" uid="uid://uqnpytlbhmrs" path="res://assets/Mini Fires 2/5/17.png" id="50_3dijt"]
+[ext_resource type="Texture2D" uid="uid://mfedyvpg3po3" path="res://assets/Mini Fires 2/6/18.png" id="50_4cshd"]
+[ext_resource type="Texture2D" uid="uid://b78amflxtf3w6" path="res://assets/Mini Fires 2/5/18.png" id="51_ryemp"]
+[ext_resource type="Texture2D" uid="uid://cg211v7aafq64" path="res://assets/Mini Fires 2/6/19.png" id="51_xgfbu"]
+[ext_resource type="Texture2D" uid="uid://dahqfai50fchm" path="res://assets/Mini Fires 2/6/20.png" id="52_ei1aj"]
+[ext_resource type="Texture2D" uid="uid://84sjib3q6whb" path="res://assets/Mini Fires 2/5/20.png" id="52_lx8qi"]
+[ext_resource type="Texture2D" uid="uid://5x0cx3qnkjtl" path="res://assets/Mini Fires 2/6/21.png" id="53_87n0y"]
+[ext_resource type="Texture2D" uid="uid://d3rrejym2xhcc" path="res://assets/Mini Fires 2/5/21.png" id="53_iralb"]
+[ext_resource type="Texture2D" uid="uid://c7y3mte68tsya" path="res://assets/Mini Fires 2/6/22.png" id="54_33lns"]
+[ext_resource type="Texture2D" uid="uid://bcn2jfpr27tl7" path="res://assets/Mini Fires 2/5/22.png" id="54_jk27s"]
+[ext_resource type="Texture2D" uid="uid://cfapnmnulf4yv" path="res://assets/Mini Fires 2/6/23.png" id="55_5jatx"]
+[ext_resource type="Texture2D" uid="uid://dfrg7v4q6a6mi" path="res://assets/Mini Fires 2/5/23.png" id="55_hmiaa"]
+[ext_resource type="Texture2D" uid="uid://ia7h3y0424dk" path="res://assets/Mini Fires 2/6/24.png" id="56_1l3q7"]
+[ext_resource type="Texture2D" uid="uid://x8n1orv7k5sc" path="res://assets/Mini Fires 2/5/24.png" id="56_v2svf"]
+[ext_resource type="Texture2D" uid="uid://b8lpn8gpfk5sv" path="res://assets/Mini Fires 2/5/25.png" id="57_2nku6"]
+[ext_resource type="Texture2D" uid="uid://q6j4i2rbwlrg" path="res://assets/Mini Fires 2/6/25.png" id="57_l4er7"]
+[ext_resource type="Texture2D" uid="uid://bhnwmvwj0q5vb" path="res://assets/Mini Fires 2/6/26.png" id="58_i0ql0"]
+[ext_resource type="Texture2D" uid="uid://sb6xcbd12rq2" path="res://assets/Mini Fires 2/5/26.png" id="58_ln64a"]
+[ext_resource type="Texture2D" uid="uid://rv3jnuvbtmwh" path="res://assets/Mini Fires 2/6/27.png" id="59_5fbb7"]
+[ext_resource type="Texture2D" uid="uid://c2p302slr2fem" path="res://assets/Mini Fires 2/5/27.png" id="59_q7e1t"]
+[ext_resource type="Texture2D" uid="uid://dt08mju3kj8vf" path="res://assets/Mini Fires 2/6/28.png" id="60_kkfkb"]
+[ext_resource type="Texture2D" uid="uid://bfvwv6smv52g8" path="res://assets/Mini Fires 2/5/28.png" id="60_v4qv5"]
+[ext_resource type="Texture2D" uid="uid://dp3mc0fd44v3q" path="res://assets/Mini Fires 2/6/29.png" id="61_5pyxh"]
+[ext_resource type="Texture2D" uid="uid://n25qjljdy5qk" path="res://assets/Mini Fires 2/5/29.png" id="61_51pmg"]
+[ext_resource type="Texture2D" uid="uid://boceo42bamqb7" path="res://assets/Mini Fires 2/5/30.png" id="62_nvasi"]
+[ext_resource type="Texture2D" uid="uid://w8kdp574wn2a" path="res://assets/Mini Fires 2/6/30.png" id="62_ofry2"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0mqak"]
-size = Vector2(20, 44)
-
-[sub_resource type="Animation" id="Animation_eiu8r"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_tf6pn"]
+resource_name = "nightmare"
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("FlippableSprite:texture")
+tracks/0/path = NodePath("Sprite2D:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333, 0.266667, 0.3, 0.333333, 0.366667, 0.4, 0.433333, 0.466667, 0.5, 0.533333, 0.566667, 0.6, 0.633333, 0.666667, 0.7, 0.733333, 0.766667, 0.8, 0.833333, 0.866667, 0.9, 0.933333, 0.966667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [ExtResource("3_xyqxj")]
+"values": [ExtResource("3_jrkvf"), ExtResource("35_urpcd"), ExtResource("36_k4s51"), ExtResource("37_0kddf"), ExtResource("38_cqark"), ExtResource("39_p5r8r"), ExtResource("40_7purm"), ExtResource("41_74k5y"), ExtResource("42_8ubp6"), ExtResource("43_8qyiw"), ExtResource("44_jqmpi"), ExtResource("45_jshc5"), ExtResource("46_pwp5a"), ExtResource("47_3gyvi"), ExtResource("48_km0td"), ExtResource("49_2b8vn"), ExtResource("50_3dijt"), ExtResource("51_ryemp"), ExtResource("21_ib0bg"), ExtResource("52_lx8qi"), ExtResource("53_iralb"), ExtResource("54_jk27s"), ExtResource("55_hmiaa"), ExtResource("56_v2svf"), ExtResource("57_2nku6"), ExtResource("58_ln64a"), ExtResource("59_q7e1t"), ExtResource("60_v4qv5"), ExtResource("61_51pmg"), ExtResource("62_nvasi")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("FlippableSprite:hframes")
+tracks/1/path = NodePath("Sprite2D:hframes")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [4]
+"values": [1]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("FlippableSprite:vframes")
+tracks/2/path = NodePath("Sprite2D:vframes")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -77,7 +138,58 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("FlippableSprite:frame")
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333, 0.266667, 0.3, 0.333333, 0.366667, 0.4, 0.433333, 0.466667, 0.5, 0.533333, 0.566667, 0.6, 0.633333, 0.666667, 0.7, 0.733333, 0.766667, 0.8, 0.833333, 0.866667, 0.9, 0.933333, 0.966667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+}
+
+[sub_resource type="Animation" id="Animation_3klqm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_jrkvf")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -86,122 +198,25 @@ tracks/3/keys = {
 "update": 1,
 "values": [0]
 }
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("FlippableSprite:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("FlippableSprite:rotation")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("FlippableSprite:scale")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("PlayerCollider:scale")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("PlayerCollider:position")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 8)]
-}
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("HitboxComponent/FlippableShape:disabled")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("HitboxComponent/FlippableShape:position")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(20, 8)]
-}
-tracks/11/type = "value"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("HitboxComponent/FlippableShape:scale")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
 
-[sub_resource type="Animation" id="Animation_myk68"]
-resource_name = "crouch"
-length = 0.1
+[sub_resource type="Animation" id="Animation_4cadh"]
+resource_name = "hell_bound"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("FlippableSprite:texture")
+tracks/0/path = NodePath("Sprite2D:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0666667),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333, 0.266667, 0.3, 0.333333, 0.366667, 0.4, 0.433333, 0.466667, 0.5, 0.533333, 0.566667, 0.6, 0.633333, 0.666667, 0.7, 0.733333, 0.766667, 0.8, 0.833333, 0.866667, 0.9, 0.933333, 0.966667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [ExtResource("4_qxt4d"), ExtResource("5_tai8w")]
+"values": [ExtResource("33_plttg"), ExtResource("34_yaqng"), ExtResource("35_p63db"), ExtResource("36_ck1vu"), ExtResource("37_tn1bp"), ExtResource("38_ub6p8"), ExtResource("39_8d7f6"), ExtResource("40_qas58"), ExtResource("41_xs5er"), ExtResource("42_yem5t"), ExtResource("43_8susv"), ExtResource("44_wj0hs"), ExtResource("45_pyql4"), ExtResource("46_jiktg"), ExtResource("47_ftfwe"), ExtResource("48_r0jaa"), ExtResource("49_7nubw"), ExtResource("50_4cshd"), ExtResource("51_xgfbu"), ExtResource("52_ei1aj"), ExtResource("53_87n0y"), ExtResource("54_33lns"), ExtResource("55_5jatx"), ExtResource("56_1l3q7"), ExtResource("57_l4er7"), ExtResource("58_i0ql0"), ExtResource("59_5fbb7"), ExtResource("60_kkfkb"), ExtResource("61_5pyxh"), ExtResource("62_ofry2")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("FlippableSprite:hframes")
+tracks/1/path = NodePath("Sprite2D:hframes")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -213,7 +228,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("FlippableSprite:vframes")
+tracks/2/path = NodePath("Sprite2D:vframes")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -225,63 +240,25 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("FlippableSprite:frame")
+tracks/3/path = NodePath("Sprite2D:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.0666667),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333, 0.266667, 0.3, 0.333333, 0.366667, 0.4, 0.433333, 0.466667, 0.5, 0.533333, 0.566667, 0.6, 0.633333, 0.666667, 0.7, 0.733333, 0.766667, 0.8, 0.833333, 0.866667, 0.9, 0.933333, 0.966667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 0]
+"values": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 }
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("FlippableSprite:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4s5lt"]
+_data = {
+"RESET": SubResource("Animation_3klqm"),
+"hellbound": SubResource("Animation_4cadh"),
+"nightmare": SubResource("Animation_tf6pn")
 }
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("FlippableSprite:scale")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("PlayerCollider:scale")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 0.683)]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("PlayerCollider:position")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 14.93)]
-}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0mqak"]
+size = Vector2(20, 44)
 
 [sub_resource type="Animation" id="Animation_qmcrx"]
 resource_name = "crouch_kick"
@@ -361,7 +338,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("HitboxComponent/FlippableShape:position")
+tracks/6/path = NodePath("PlayerHitbox/FlippableShape:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -373,7 +350,7 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("HitboxComponent/FlippableShape:scale")
+tracks/7/path = NodePath("PlayerHitbox/FlippableShape:scale")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -385,7 +362,7 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("HitboxComponent/FlippableShape:disabled")
+tracks/8/path = NodePath("PlayerHitbox/FlippableShape:disabled")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -449,7 +426,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("HitboxComponent/FlippableShape:disabled")
+tracks/4/path = NodePath("PlayerHitbox/FlippableShape:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -461,7 +438,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("HitboxComponent/FlippableShape:position")
+tracks/5/path = NodePath("PlayerHitbox/FlippableShape:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -548,7 +525,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("HitboxComponent/FlippableShape:disabled")
+tracks/6/path = NodePath("PlayerHitbox/FlippableShape:disabled")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -560,7 +537,7 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("HitboxComponent/FlippableShape:scale")
+tracks/7/path = NodePath("PlayerHitbox/FlippableShape:scale")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -647,7 +624,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("HitboxComponent/FlippableShape:disabled")
+tracks/6/path = NodePath("PlayerHitbox/FlippableShape:disabled")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -659,7 +636,7 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("HitboxComponent/FlippableShape:scale")
+tracks/7/path = NodePath("PlayerHitbox/FlippableShape:scale")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -667,6 +644,59 @@ tracks/7/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(1, 1), Vector2(1, 0.5)]
+}
+
+[sub_resource type="Animation" id="Animation_av23g"]
+resource_name = "hurt"
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FlippableSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("31_6kadg"), ExtResource("32_y6e6h")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FlippableSprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FlippableSprite:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("FlippableSprite:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 0]
 }
 
 [sub_resource type="Animation" id="Animation_ikdl1"]
@@ -784,7 +814,7 @@ tracks/8/keys = {
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("HitboxComponent/FlippableShape:position")
+tracks/9/path = NodePath("PlayerHitbox/FlippableShape:position")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
@@ -796,7 +826,7 @@ tracks/9/keys = {
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("HitboxComponent/FlippableShape:disabled")
+tracks/10/path = NodePath("PlayerHitbox/FlippableShape:disabled")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
@@ -985,7 +1015,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("HitboxComponent/FlippableShape:disabled")
+tracks/6/path = NodePath("PlayerHitbox/FlippableShape:disabled")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -997,7 +1027,7 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("HitboxComponent/FlippableShape:position")
+tracks/7/path = NodePath("PlayerHitbox/FlippableShape:position")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -1009,7 +1039,7 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("HitboxComponent/FlippableShape:scale")
+tracks/8/path = NodePath("PlayerHitbox/FlippableShape:scale")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -1109,7 +1139,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("HitboxComponent/FlippableShape:disabled")
+tracks/5/path = NodePath("PlayerHitbox/FlippableShape:disabled")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -1121,7 +1151,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("HitboxComponent/FlippableShape:scale")
+tracks/6/path = NodePath("PlayerHitbox/FlippableShape:scale")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -1133,7 +1163,7 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("HitboxComponent/FlippableShape:position")
+tracks/7/path = NodePath("PlayerHitbox/FlippableShape:position")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -1221,7 +1251,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("HitboxComponent/FlippableShape:disabled")
+tracks/4/path = NodePath("PlayerHitbox/FlippableShape:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -1233,7 +1263,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("HitboxComponent/FlippableShape:scale")
+tracks/5/path = NodePath("PlayerHitbox/FlippableShape:scale")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -1245,7 +1275,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("HitboxComponent/FlippableShape:position")
+tracks/6/path = NodePath("PlayerHitbox/FlippableShape:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -1309,7 +1339,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("HitboxComponent/FlippableShape:disabled")
+tracks/4/path = NodePath("PlayerHitbox/FlippableShape:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -1321,7 +1351,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("HitboxComponent/FlippableShape:position")
+tracks/5/path = NodePath("PlayerHitbox/FlippableShape:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -1333,7 +1363,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("HitboxComponent/FlippableShape:scale")
+tracks/6/path = NodePath("PlayerHitbox/FlippableShape:scale")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -1455,6 +1485,301 @@ tracks/8/keys = {
 "values": [Vector2(0, 7.85)]
 }
 
+[sub_resource type="Animation" id="Animation_eiu8r"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FlippableSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_xyqxj")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FlippableSprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FlippableSprite:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("FlippableSprite:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("FlippableSprite:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("FlippableSprite:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("FlippableSprite:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("PlayerCollider:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("PlayerCollider:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 8)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("PlayerHitbox/FlippableShape:disabled")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("PlayerHitbox/FlippableShape:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(20, 8)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("PlayerHitbox/FlippableShape:scale")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("PowerUpVisualEffect/Sprite2D:texture")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_jrkvf")]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("PowerUpVisualEffect/Sprite2D:hframes")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("PowerUpVisualEffect/Sprite2D:vframes")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("PowerUpVisualEffect/Sprite2D:frame")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_myk68"]
+resource_name = "crouch"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FlippableSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("4_qxt4d"), ExtResource("5_tai8w")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FlippableSprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FlippableSprite:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("FlippableSprite:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.0666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("FlippableSprite:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("FlippableSprite:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("PlayerCollider:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 0.683)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("PlayerCollider:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 14.93)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_g10yx"]
 _data = {
 "RESET": SubResource("Animation_eiu8r"),
@@ -1463,6 +1788,7 @@ _data = {
 "crouch_kick_left": SubResource("Animation_6yt85"),
 "flykick": SubResource("Animation_ck2km"),
 "flykick_left": SubResource("Animation_58wdx"),
+"hurt": SubResource("Animation_av23g"),
 "idle": SubResource("Animation_ikdl1"),
 "jump": SubResource("Animation_np53s"),
 "kick": SubResource("Animation_hlede"),
@@ -1475,9 +1801,28 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ksyw3"]
 size = Vector2(20, 44)
 
-[node name="Player" type="CharacterBody2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_qgmdu"]
+radius = 57.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gsyoj"]
+
+[node name="Player" type="CharacterBody2D" groups=["player"]]
 z_index = 5
 script = ExtResource("1_qnwkt")
+
+[node name="PowerUpVisualEffect" type="Node2D" parent="."]
+script = ExtResource("2_nlxkt")
+
+[node name="Sprite2D" type="Sprite2D" parent="PowerUpVisualEffect"]
+visible = false
+position = Vector2(-1, -28)
+scale = Vector2(1, 1)
+texture = ExtResource("3_jrkvf")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PowerUpVisualEffect"]
+libraries = {
+"": SubResource("AnimationLibrary_4s5lt")
+}
 
 [node name="FlippableSprite" parent="." instance=ExtResource("5_baaw3")]
 texture = ExtResource("3_xyqxj")
@@ -1488,17 +1833,41 @@ position = Vector2(0, 8)
 shape = SubResource("RectangleShape2D_0mqak")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
 libraries = {
 "": SubResource("AnimationLibrary_g10yx")
 }
 autoplay = "idle"
 
-[node name="HitboxComponent" parent="." node_paths=PackedStringArray("flippableSprite") instance=ExtResource("6_jf1x1")]
+[node name="PlayerHitbox" parent="." node_paths=PackedStringArray("flippableSprite") instance=ExtResource("6_jf1x1")]
 flippableSprite = NodePath("../FlippableSprite")
 
-[node name="FlippableShape" parent="HitboxComponent" instance=ExtResource("8_j3el0")]
+[node name="FlippableShape" parent="PlayerHitbox" instance=ExtResource("8_j3el0")]
 position = Vector2(20, 8)
 shape = SubResource("RectangleShape2D_ksyw3")
 disabled = true
 debug_color = Color(0.726211, 0.414175, 0.620274, 0.42)
 default_position = Vector2(20, 8)
+
+[node name="GrabArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GrabArea"]
+shape = SubResource("CircleShape2D_qgmdu")
+
+[node name="CollectArea" type="Area2D" parent="."]
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectArea"]
+shape = SubResource("CircleShape2D_gsyoj")
+
+[node name="RegenCooldown" type="Timer" parent="."]
+wait_time = 5.0
+
+[node name="StaminaCooldown" type="Timer" parent="."]
+
+[connection signal="area_entered" from="GrabArea" to="." method="_on_grab_area_area_entered"]
+[connection signal="area_entered" from="CollectArea" to="." method="_on_collect_area_area_entered"]
+[connection signal="timeout" from="RegenCooldown" to="." method="_on_regen_cooldown_timeout"]
+[connection signal="timeout" from="StaminaCooldown" to="." method="_on_stamina_cooldown_timeout"]

@@ -1,9 +1,9 @@
-[gd_scene load_steps=24 format=3 uid="uid://c1sydo80htnln"]
+[gd_scene load_steps=27 format=3 uid="uid://c1sydo80htnln"]
 
 [ext_resource type="Script" path="res://scripts/burning_ghoul.gd" id="1_jul0o"]
+[ext_resource type="Script" path="res://scripts/enemy_controller_burning_ghoul.gd" id="1_u5pvu"]
 [ext_resource type="Texture2D" uid="uid://brxd0mknabyj0" path="res://assets/gothicvania church files/SPRITES/burning-ghoul/sprites/v1/burning-ghoul-1.png" id="1_usgru"]
 [ext_resource type="Texture2D" uid="uid://dj47txiifpvle" path="res://assets/gothicvania church files/SPRITES/burning-ghoul/sprites/v1/burning-ghoul-2.png" id="2_6hytm"]
-[ext_resource type="Script" path="res://scripts/explosion_radius.gd" id="2_axxtj"]
 [ext_resource type="Texture2D" uid="uid://ctpkwfu18syil" path="res://assets/gothicvania church files/SPRITES/burning-ghoul/sprites/v1/burning-ghoul-3.png" id="3_fftxm"]
 [ext_resource type="Texture2D" uid="uid://6gs4sf3ulm2y" path="res://assets/gothicvania church files/SPRITES/burning-ghoul/sprites/v1/burning-ghoul-4.png" id="4_kf6xy"]
 [ext_resource type="Texture2D" uid="uid://dt6pvjkvbpftl" path="res://assets/gothicvania church files/SPRITES/burning-ghoul/sprites/v1/burning-ghoul-5.png" id="5_0wgwg"]
@@ -17,11 +17,18 @@
 [ext_resource type="Texture2D" uid="uid://d2hhqkp2hjdqy" path="res://assets/gothicvania church files/SPRITES/fx/enemy-death/enemy-death-sprites/enemy-death7.png" id="13_6435v"]
 [ext_resource type="Texture2D" uid="uid://dex8oqc4dxgen" path="res://assets/gothicvania church files/SPRITES/fx/enemy-death/enemy-death-sprites/enemy-death8.png" id="14_r3eu2"]
 [ext_resource type="Texture2D" uid="uid://jdmpfbmo1w4m" path="res://assets/gothicvania church files/SPRITES/fx/enemy-death/enemy-death-sprites/enemy-death9.png" id="15_tij7k"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_324v4"]
-radius = 45.0111
+[ext_resource type="PackedScene" uid="uid://ceonqfgt2vso7" path="res://scenes/UI/health_bar.tscn" id="18_kqxb6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fpio5"]
+size = Vector2(26, 40)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_324v4"]
+radius = 28.0713
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ryfoq"]
+radius = 187.003
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_scq50"]
 size = Vector2(26, 40)
 
 [sub_resource type="Animation" id="Animation_521ty"]
@@ -29,7 +36,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("RigidBody2D/Sprite2D:texture")
+tracks/0/path = NodePath("BurningGhoul/RigidBody2D/Sprite2D:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -41,7 +48,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("RigidBody2D/Sprite2D:hframes")
+tracks/1/path = NodePath("BurningGhoul/RigidBody2D/Sprite2D:hframes")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -53,7 +60,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("RigidBody2D/Sprite2D:vframes")
+tracks/2/path = NodePath("BurningGhoul/RigidBody2D/Sprite2D:vframes")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -65,7 +72,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("RigidBody2D/Sprite2D:frame")
+tracks/3/path = NodePath("BurningGhoul/RigidBody2D/Sprite2D:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -81,7 +88,7 @@ length = 0.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("RigidBody2D/Sprite2D:texture")
+tracks/0/path = NodePath("BurningGhoul/RigidBody2D/Sprite2D:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -93,7 +100,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("RigidBody2D/Sprite2D:hframes")
+tracks/1/path = NodePath("BurningGhoul/RigidBody2D/Sprite2D:hframes")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -105,7 +112,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("RigidBody2D/Sprite2D:vframes")
+tracks/2/path = NodePath("BurningGhoul/RigidBody2D/Sprite2D:vframes")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -117,7 +124,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("RigidBody2D/Sprite2D:frame")
+tracks/3/path = NodePath("BurningGhoul/RigidBody2D/Sprite2D:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -134,7 +141,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("RigidBody2D/Sprite2D:texture")
+tracks/0/path = NodePath("BurningGhoul/RigidBody2D/Sprite2D:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -146,7 +153,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("RigidBody2D/Sprite2D:hframes")
+tracks/1/path = NodePath("BurningGhoul/RigidBody2D/Sprite2D:hframes")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -158,7 +165,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("RigidBody2D/Sprite2D:vframes")
+tracks/2/path = NodePath("BurningGhoul/RigidBody2D/Sprite2D:vframes")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -170,7 +177,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("RigidBody2D/Sprite2D:frame")
+tracks/3/path = NodePath("BurningGhoul/RigidBody2D/Sprite2D:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -187,31 +194,62 @@ _data = {
 "run": SubResource("Animation_4lh11")
 }
 
-[node name="BurningGhoul" type="Node2D"]
+[node name="BurningGhoul" type="Node2D" groups=["enemy"]]
+
+[node name="EnemyManager" type="Node" parent="." groups=["enemy"]]
+unique_name_in_owner = true
+script = ExtResource("1_u5pvu")
+enemyHealth = 20
+max_enemyHealth = 20
+enemySpeed = 50
+
+[node name="BurningGhoul" type="CharacterBody2D" parent="."]
 script = ExtResource("1_jul0o")
 
-[node name="EnemyManager" type="Node" parent="."]
+[node name="RigidBody2D" type="RigidBody2D" parent="BurningGhoul"]
 
-[node name="RigidBody2D" type="RigidBody2D" parent="."]
-
-[node name="ExplosionRadius" type="Area2D" parent="RigidBody2D"]
-script = ExtResource("2_axxtj")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D/ExplosionRadius"]
-position = Vector2(-2, 9)
-shape = SubResource("CircleShape2D_324v4")
-
-[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
-texture = ExtResource("1_usgru")
-
-[node name="Collider" type="CollisionShape2D" parent="RigidBody2D"]
+[node name="Collider" type="CollisionShape2D" parent="BurningGhoul/RigidBody2D"]
 position = Vector2(-3, 10)
 shape = SubResource("RectangleShape2D_fpio5")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="RigidBody2D"]
-root_node = NodePath("../..")
+[node name="Sprite2D" type="Sprite2D" parent="BurningGhoul/RigidBody2D"]
+texture = ExtResource("1_usgru")
+
+[node name="ExplosionRadius" type="Area2D" parent="BurningGhoul/RigidBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BurningGhoul/RigidBody2D/ExplosionRadius"]
+position = Vector2(-2, 9)
+shape = SubResource("CircleShape2D_324v4")
+
+[node name="AwarenessZone" type="Area2D" parent="BurningGhoul/RigidBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BurningGhoul/RigidBody2D/AwarenessZone"]
+position = Vector2(-3, 8)
+shape = SubResource("CircleShape2D_ryfoq")
+
+[node name="MainCollider" type="Area2D" parent="BurningGhoul/RigidBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BurningGhoul/RigidBody2D/MainCollider"]
+position = Vector2(-3, 10)
+shape = SubResource("RectangleShape2D_scq50")
+debug_color = Color(0.740216, 0.408785, 0.596142, 0.42)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BurningGhoul/RigidBody2D"]
+root_node = NodePath("../../..")
 libraries = {
 "": SubResource("AnimationLibrary_nb17f")
 }
 
-[connection signal="body_entered" from="RigidBody2D/ExplosionRadius" to="." method="_on_explosion_radius_body_entered"]
+[node name="HealthBar" parent="BurningGhoul" instance=ExtResource("18_kqxb6")]
+offset_left = -16.0
+offset_top = -20.0
+offset_right = 12.0
+offset_bottom = -16.0
+
+[connection signal="body_entered" from="BurningGhoul/RigidBody2D/ExplosionRadius" to="." method="_on_explosion_radius_body_entered"]
+[connection signal="body_entered" from="BurningGhoul/RigidBody2D/ExplosionRadius" to="BurningGhoul" method="_on_explosion_radius_body_entered"]
+[connection signal="body_entered" from="BurningGhoul/RigidBody2D/ExplosionRadius" to="BurningGhoul/RigidBody2D/ExplosionRadius" method="_on_body_entered"]
+[connection signal="body_exited" from="BurningGhoul/RigidBody2D/ExplosionRadius" to="BurningGhoul" method="_on_explosion_radius_body_exited"]
+[connection signal="body_entered" from="BurningGhoul/RigidBody2D/AwarenessZone" to="EnemyManager" method="_on_awareness_zone_body_entered"]
+[connection signal="body_entered" from="BurningGhoul/RigidBody2D/AwarenessZone" to="BurningGhoul" method="_on_awareness_zone_body_entered"]
+[connection signal="area_shape_entered" from="BurningGhoul/RigidBody2D/MainCollider" to="BurningGhoul" method="_on_main_collider_area_shape_entered"]

@@ -1,69 +1,26 @@
-[gd_scene load_steps=8 format=3 uid="uid://0hr871v8n0n5"]
+[gd_scene load_steps=14 format=3 uid="uid://0hr871v8n0n5"]
 
+[ext_resource type="Script" path="res://scripts/nightmare.gd" id="1_c3uen"]
 [ext_resource type="Texture2D" uid="uid://dy53ogfx7ax34" path="res://assets/gothicvania patreon collection/Nightmare-Files/PNG/nightmare-idle.png" id="1_dauvb"]
 [ext_resource type="Texture2D" uid="uid://upkhs8r44cpl" path="res://assets/gothicvania patreon collection/Nightmare-Files/PNG/nightmare-galloping.png" id="2_qrygx"]
+[ext_resource type="Script" path="res://scripts/flippableSprite.gd" id="3_31kkh"]
+[ext_resource type="Texture2D" uid="uid://lcr5awf02h71" path="res://assets/Particle FX 1.2 Free(1)/Spritesheets/Eletric A-Sheet.png" id="4_ube76"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q6l4x"]
-size = Vector2(90, 65)
+size = Vector2(74, 65)
 
-[sub_resource type="Animation" id="Animation_a1n7l"]
-resource_name = "idle"
-length = 0.22
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("1_dauvb")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:hframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [4]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:vframes")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Sprite2D:frame")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3]
-}
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6ck0g"]
+size = Vector2(236, 62)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4dqxh"]
+radius = 474.004
 
 [sub_resource type="Animation" id="Animation_u8d1y"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/path = NodePath("RigidBody2D/Sprite2D:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -75,7 +32,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/path = NodePath("RigidBody2D/Sprite2D:hframes")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -87,7 +44,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/path = NodePath("RigidBody2D/Sprite2D:vframes")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -99,7 +56,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/path = NodePath("RigidBody2D/Sprite2D:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -108,13 +65,27 @@ tracks/3/keys = {
 "update": 1,
 "values": [0]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("RigidBody2D/Sprite2D:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_852hh"]
 resource_name = "galloping"
+length = 0.4
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/path = NodePath("RigidBody2D/Sprite2D:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -126,7 +97,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/path = NodePath("RigidBody2D/Sprite2D:hframes")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -138,7 +109,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/path = NodePath("RigidBody2D/Sprite2D:vframes")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -150,36 +121,190 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/path = NodePath("RigidBody2D/Sprite2D:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1),
+"times": PackedFloat32Array(0, 0.133333, 0.233333, 0.333333),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("RigidBody2D/Sprite2D:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_a1n7l"]
+resource_name = "idle"
+length = 0.22
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RigidBody2D/Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_dauvb")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RigidBody2D/Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RigidBody2D/Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RigidBody2D/Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("RigidBody2D/Sprite2D:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_q8yne"]
+resource_name = "powerUpfx"
+length = 0.52
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RigidBody2D/Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_ube76")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RigidBody2D/Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RigidBody2D/Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RigidBody2D/Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 3]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ub2ab"]
 _data = {
 "RESET": SubResource("Animation_u8d1y"),
 "galloping": SubResource("Animation_852hh"),
-"idle": SubResource("Animation_a1n7l")
+"idle": SubResource("Animation_a1n7l"),
+"powerUpfx": SubResource("Animation_q8yne")
 }
 
 [node name="Nightmare" type="Node2D"]
 
 [node name="Nightmare" type="CharacterBody2D" parent="."]
+script = ExtResource("1_c3uen")
+speed = 260
 
-[node name="Sprite2D" type="Sprite2D" parent="Nightmare"]
+[node name="RigidBody2D" type="RigidBody2D" parent="Nightmare"]
+
+[node name="Sprite2D" type="Sprite2D" parent="Nightmare/RigidBody2D"]
 texture = ExtResource("1_dauvb")
 hframes = 4
+script = ExtResource("3_31kkh")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Nightmare"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Nightmare/RigidBody2D"]
 position = Vector2(-3, 15.5)
 shape = SubResource("RectangleShape2D_q6l4x")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Nightmare"]
+[node name="ActivatePoweUp" type="Area2D" parent="Nightmare/RigidBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Nightmare/RigidBody2D/ActivatePoweUp"]
+position = Vector2(-1, 17)
+shape = SubResource("RectangleShape2D_6ck0g")
+debug_color = Color(0, 0.64883, 0.167283, 0.42)
+
+[node name="AwarenessArea" type="Area2D" parent="Nightmare/RigidBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Nightmare/RigidBody2D/AwarenessArea"]
+position = Vector2(-2, 2)
+shape = SubResource("CircleShape2D_4dqxh")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Nightmare/RigidBody2D"]
+root_node = NodePath("../..")
 libraries = {
 "": SubResource("AnimationLibrary_ub2ab")
 }
+autoplay = "idle"
+
+[connection signal="body_entered" from="Nightmare/RigidBody2D/ActivatePoweUp" to="Nightmare" method="_on_activate_powe_up_body_entered"]
+[connection signal="body_entered" from="Nightmare/RigidBody2D/AwarenessArea" to="Nightmare" method="_on_awareness_area_body_entered"]
+[connection signal="body_exited" from="Nightmare/RigidBody2D/AwarenessArea" to="Nightmare" method="_on_awareness_area_body_exited"]

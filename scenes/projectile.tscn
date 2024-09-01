@@ -1,0 +1,62 @@
+[gd_scene load_steps=8 format=3 uid="uid://dpdsn6twnx6qa"]
+
+[ext_resource type="Script" path="res://scripts/projectile.gd" id="1_21f6o"]
+[ext_resource type="Texture2D" uid="uid://c7aysypjnfgyo" path="res://assets/gothicvania church files/SPRITES/fx/fireball/fireball-spritesheet/fireball.png" id="2_qdwnh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xwdrv"]
+atlas = ExtResource("2_qdwnh")
+region = Rect2(0, 0, 26, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_atgqn"]
+atlas = ExtResource("2_qdwnh")
+region = Rect2(26, 0, 26, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vx50j"]
+atlas = ExtResource("2_qdwnh")
+region = Rect2(52, 0, 26, 26)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jm0ts"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xwdrv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_atgqn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vx50j")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_di3wr"]
+radius = 11.0454
+
+[node name="Projectile" type="CharacterBody2D"]
+scale = Vector2(1.34842, 1.34842)
+script = ExtResource("1_21f6o")
+speed = 150
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_jm0ts")
+frame = 2
+frame_progress = 0.271414
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_di3wr")
+disabled = true
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_di3wr")
+
+[node name="Life" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="timeout" from="Life" to="." method="_on_life_timeout"]

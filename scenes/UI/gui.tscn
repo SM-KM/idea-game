@@ -1,0 +1,60 @@
+[gd_scene load_steps=7 format=3 uid="uid://ontmvpbad3o2"]
+
+[ext_resource type="Texture2D" uid="uid://xwj1xo0cwt8o" path="res://assets/UI/GUI.png" id="1_dm4uo"]
+[ext_resource type="Script" path="res://scenes/UI/gui.gd" id="2_hygqw"]
+[ext_resource type="FontFile" uid="uid://g4pbjnt4ulgy" path="res://assets/fonts/PixelOperator8.ttf" id="3_yb7ci"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2uajf"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e1auw"]
+bg_color = Color(1, 0.230529, 0.219985, 1)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0yp13"]
+bg_color = Color(4.81308e-06, 0.657264, 0.858636, 1)
+border_color = Color(0.501966, 0.361059, 0.153027, 1)
+corner_detail = 1
+
+[node name="GUI" type="Sprite2D"]
+z_index = 5
+position = Vector2(-309, 126)
+scale = Vector2(2.53571, 2.53571)
+texture = ExtResource("1_dm4uo")
+script = ExtResource("2_hygqw")
+
+[node name="TextController" type="Node2D" parent="."]
+scale = Vector2(0.35, 0.35)
+
+[node name="Label" type="Label" parent="TextController"]
+offset_left = -11.0
+offset_top = 10.0
+offset_right = 64.0
+offset_bottom = 26.0
+theme_override_fonts/font = ExtResource("3_yb7ci")
+theme_override_font_sizes/font_size = 0
+text = "0
+"
+text_direction = 1
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+z_index = 6
+offset_left = -12.2254
+offset_top = -9.85918
+offset_right = 30.7746
+offset_bottom = -6.85918
+theme_override_styles/background = SubResource("StyleBoxFlat_2uajf")
+theme_override_styles/fill = SubResource("StyleBoxFlat_e1auw")
+value = 100.0
+show_percentage = false
+
+[node name="StaminaBar" type="ProgressBar" parent="."]
+z_index = 6
+offset_left = -12.2254
+offset_top = -3.94368
+offset_right = 25.7746
+offset_bottom = -0.943676
+theme_override_styles/background = SubResource("StyleBoxFlat_2uajf")
+theme_override_styles/fill = SubResource("StyleBoxFlat_0yp13")
+value = 100.0
+show_percentage = false

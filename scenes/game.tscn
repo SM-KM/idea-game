@@ -1,17 +1,14 @@
-[gd_scene load_steps=15 format=4 uid="uid://6gn25wmmkopa"]
+[gd_scene load_steps=12 format=4 uid="uid://6gn25wmmkopa"]
 
 [ext_resource type="Texture2D" uid="uid://5yht68pxcvdr" path="res://assets/gothicvania church/assets/environment/tileset.png" id="1_fgt7n"]
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_xs7hh"]
 [ext_resource type="PackedScene" uid="uid://cwbjbjkjrm1k6" path="res://scenes/player.tscn" id="2_7bte5"]
+[ext_resource type="Script" path="res://scripts/enemies_manager.gd" id="2_nkqta"]
 [ext_resource type="Texture2D" uid="uid://coimhpntj65hx" path="res://assets/GothicVania-town-files/PNG/environment/environment-preview.png" id="3_gaiv2"]
-[ext_resource type="Texture2D" uid="uid://dkbwawp7ptc8l" path="res://assets/gothicvania church/assets/environment/background.png" id="3_wsb8y"]
-[ext_resource type="PackedScene" uid="uid://cer0nccipkc8l" path="res://scenes/demon.tscn" id="5_5om8d"]
-[ext_resource type="PackedScene" uid="uid://c1sydo80htnln" path="res://scenes/burning_ghoul.tscn" id="6_l4uj3"]
-[ext_resource type="PackedScene" uid="uid://bxhyr6rglggvs" path="res://scenes/ghost.tscn" id="7_olrdf"]
-[ext_resource type="PackedScene" uid="uid://c755nrftgndn" path="res://scenes/fire_skull.tscn" id="8_j044c"]
-[ext_resource type="PackedScene" uid="uid://dg00cf0lksfqq" path="res://scenes/hell_beast.tscn" id="10_8f3na"]
-[ext_resource type="PackedScene" uid="uid://dc2u07hjbdw40" path="res://scenes/hell_bound.tscn" id="11_ncb4t"]
-[ext_resource type="PackedScene" uid="uid://0hr871v8n0n5" path="res://scenes/nightmare.tscn" id="12_3tj5l"]
+[ext_resource type="PackedScene" uid="uid://dacpg4dmirmk7" path="res://scenes/Util/enemy_spawner.tscn" id="3_t7su0"]
+[ext_resource type="Script" path="res://scripts/Util/spawn_info.gd" id="4_gqfnb"]
+[ext_resource type="PackedScene" uid="uid://ontmvpbad3o2" path="res://scenes/UI/gui.tscn" id="8_4wrhx"]
+[ext_resource type="PackedScene" uid="uid://bmb8y34p0v32b" path="res://scenes/bringer_of_death.tscn" id="9_0lt4l"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vm4qq"]
 texture = ExtResource("1_fgt7n")
@@ -163,18 +160,23 @@ sources/1 = SubResource("TileSetAtlasSource_vm4qq")
 
 [node name="GameManager" type="Node" parent="."]
 script = ExtResource("1_xs7hh")
+punchStaminaCost = 5
+knockbackPower = 1500
+
+[node name="UI" type="Node" parent="GameManager"]
 
 [node name="SoundManager" type="Node" parent="GameManager"]
+
+[node name="EnemiesManager" type="Node" parent="GameManager"]
+script = ExtResource("2_nkqta")
+
+[node name="EnemySpawner" parent="GameManager/EnemiesManager" instance=ExtResource("3_t7su0")]
+z_index = 4
+spawns = Array[ExtResource("4_gqfnb")]([])
 
 [node name="Environment" type="Node" parent="."]
 
 [node name="Backgrounds" type="Node" parent="Environment"]
-
-[node name="Background" type="Sprite2D" parent="Environment/Backgrounds"]
-visible = false
-position = Vector2(132, -156)
-scale = Vector2(1.35714, 1.35714)
-texture = ExtResource("3_wsb8y")
 
 [node name="Environment-preview" type="Sprite2D" parent="Environment/Backgrounds"]
 position = Vector2(-225, -125)
@@ -190,32 +192,21 @@ tile_set = SubResource("TileSet_mvvoi")
 
 [node name="Player" parent="." instance=ExtResource("2_7bte5")]
 unique_name_in_owner = true
-position = Vector2(-333, -90)
+position = Vector2(-521, -74)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(0, 7)
 zoom = Vector2(2, 2)
+
+[node name="GUI" parent="Player" instance=ExtResource("8_4wrhx")]
+position = Vector2(-245.187, -164.25)
+scale = Vector2(1.66071, 1.66071)
+
+[node name="Allies" type="Node" parent="."]
 
 [node name="Enemies" type="Node" parent="."]
 
-[node name="Demon" parent="Enemies" instance=ExtResource("5_5om8d")]
-z_index = 2
-position = Vector2(-186, -98)
+[node name="BringerOfDeath" parent="Enemies" instance=ExtResource("9_0lt4l")]
+position = Vector2(-356, -84)
 
-[node name="BurningGhoul" parent="Enemies" instance=ExtResource("6_l4uj3")]
-position = Vector2(192, -110)
-
-[node name="Ghost" parent="Enemies" instance=ExtResource("7_olrdf")]
-position = Vector2(100, -97)
-
-[node name="FireSkull" parent="Enemies" instance=ExtResource("8_j044c")]
-position = Vector2(-609, -70)
-scale = Vector2(-1, 1)
-
-[node name="HellBeast" parent="Enemies" instance=ExtResource("10_8f3na")]
-position = Vector2(-669, -78)
-
-[node name="HellBound" parent="Enemies" instance=ExtResource("11_ncb4t")]
-position = Vector2(-543, -55)
-
-[node name="Nightmare" parent="Enemies" instance=ExtResource("12_3tj5l")]
-position = Vector2(0, -75)
+[node name="Loot" type="Node" parent="."]

@@ -1,0 +1,203 @@
+[gd_scene load_steps=23 format=3 uid="uid://bmb8y34p0v32b"]
+
+[ext_resource type="Script" path="res://scripts/enemy_controller.gd" id="1_kxblm"]
+[ext_resource type="Script" path="res://scripts/flippableSprite.gd" id="2_j01bs"]
+[ext_resource type="Script" path="res://scripts/bringer_of_death.gd" id="2_xuq6o"]
+[ext_resource type="Texture2D" uid="uid://dqa8eqm2pc0i0" path="res://assets/Bringer-Of-Death/Individual Sprite/Idle/Bringer-of-Death_Idle_1.png" id="2_ylayq"]
+[ext_resource type="Script" path="res://scripts/hitbox_component.gd" id="3_7c2js"]
+[ext_resource type="Script" path="res://scripts/flippable_shape.gd" id="4_0v6sm"]
+[ext_resource type="Texture2D" uid="uid://bgkpwr4rec8i7" path="res://assets/Bringer-Of-Death/Individual Sprite/Idle/Bringer-of-Death_Idle_2.png" id="4_ob61r"]
+[ext_resource type="Texture2D" uid="uid://cgy5ls7fs1v2l" path="res://assets/Bringer-Of-Death/Individual Sprite/Idle/Bringer-of-Death_Idle_3.png" id="5_r7nd5"]
+[ext_resource type="Texture2D" uid="uid://b6rebp5stfp7s" path="res://assets/Bringer-Of-Death/Individual Sprite/Idle/Bringer-of-Death_Idle_4.png" id="6_sflyj"]
+[ext_resource type="Texture2D" uid="uid://o1rq72nmoppu" path="res://assets/Bringer-Of-Death/Individual Sprite/Idle/Bringer-of-Death_Idle_5.png" id="7_p7vc0"]
+[ext_resource type="Texture2D" uid="uid://mul15ya0bwky" path="res://assets/Bringer-Of-Death/Individual Sprite/Idle/Bringer-of-Death_Idle_6.png" id="8_quaso"]
+[ext_resource type="Texture2D" uid="uid://c0ltw5gwrmave" path="res://assets/Bringer-Of-Death/Individual Sprite/Idle/Bringer-of-Death_Idle_7.png" id="9_5gx7j"]
+[ext_resource type="Texture2D" uid="uid://dg17o2edkm7mv" path="res://assets/Bringer-Of-Death/Individual Sprite/Idle/Bringer-of-Death_Idle_8.png" id="10_qwtlc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v1tat"]
+size = Vector2(38, 55)
+
+[sub_resource type="Animation" id="Animation_i8sxk"]
+resource_name = "idle"
+length = 0.46
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FlippableSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.1, 0.166667, 0.233333, 0.3, 0.366667, 0.433333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_ylayq"), ExtResource("4_ob61r"), ExtResource("5_r7nd5"), ExtResource("6_sflyj"), ExtResource("7_p7vc0"), ExtResource("8_quaso"), ExtResource("9_5gx7j"), ExtResource("10_qwtlc")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FlippableSprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FlippableSprite:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("FlippableSprite:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2, 0.266667, 0.333333, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 0, 0, 0, 0, 0, 0]
+}
+
+[sub_resource type="Animation" id="Animation_mn5bt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FlippableSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_ylayq")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FlippableSprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FlippableSprite:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("FlippableSprite:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_l7mrq"]
+_data = {
+"RESET": SubResource("Animation_mn5bt"),
+"idle": SubResource("Animation_i8sxk")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ya4qp"]
+size = Vector2(20, 55)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_in1ks"]
+radius = 38.0526
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8adyu"]
+radius = 189.011
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hfl05"]
+radius = 295.027
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1rx0t"]
+radius = 16.0
+height = 56.0
+
+[node name="BringerOfDeath" type="Node2D"]
+
+[node name="EnemyController" type="Node" parent="."]
+script = ExtResource("1_kxblm")
+
+[node name="BringerOfDeath" type="CharacterBody2D" parent="."]
+script = ExtResource("2_xuq6o")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="BringerOfDeath"]
+
+[node name="FlippableSprite" type="Sprite2D" parent="BringerOfDeath/RigidBody2D"]
+texture = ExtResource("2_ylayq")
+script = ExtResource("2_j01bs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BringerOfDeath/RigidBody2D"]
+position = Vector2(36, 18)
+shape = SubResource("RectangleShape2D_v1tat")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BringerOfDeath/RigidBody2D"]
+libraries = {
+"": SubResource("AnimationLibrary_l7mrq")
+}
+autoplay = "idle"
+
+[node name="HitboxComponent" type="Area2D" parent="BringerOfDeath/RigidBody2D"]
+script = ExtResource("3_7c2js")
+
+[node name="FlippableShape" type="CollisionShape2D" parent="BringerOfDeath/RigidBody2D/HitboxComponent"]
+position = Vector2(4, 18)
+shape = SubResource("RectangleShape2D_ya4qp")
+debug_color = Color(1, 0.621512, 0.552506, 0.42)
+script = ExtResource("4_0v6sm")
+default_position = Vector2(4, 18)
+
+[node name="CloseRangeAttack" type="Area2D" parent="BringerOfDeath/RigidBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BringerOfDeath/RigidBody2D/CloseRangeAttack"]
+position = Vector2(36, 16)
+shape = SubResource("CircleShape2D_in1ks")
+debug_color = Color(0.647579, 0.516635, 0.191473, 0.42)
+
+[node name="FarRangeAttack" type="Area2D" parent="BringerOfDeath/RigidBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BringerOfDeath/RigidBody2D/FarRangeAttack"]
+position = Vector2(36, 16)
+shape = SubResource("CircleShape2D_8adyu")
+debug_color = Color(0.625127, 0.389345, 0.920284, 0.42)
+
+[node name="AwarenessZone" type="Area2D" parent="BringerOfDeath/RigidBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BringerOfDeath/RigidBody2D/AwarenessZone"]
+position = Vector2(36, 18)
+shape = SubResource("CircleShape2D_hfl05")
+
+[node name="ReceiveHit" type="Area2D" parent="BringerOfDeath/RigidBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BringerOfDeath/RigidBody2D/ReceiveHit"]
+position = Vector2(36, 18)
+shape = SubResource("CapsuleShape2D_1rx0t")
