@@ -373,7 +373,7 @@ _data = {
 size = Vector2(20, 42)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_buid7"]
-radius = 85.0
+radius = 143.003
 
 [node name="Ghost" type="Node2D"]
 
@@ -415,3 +415,4 @@ offset_bottom = -25.0
 [connection signal="area_shape_entered" from="GhostBody/HitboxComponent" to="GhostBody" method="_on_hitbox_component_area_shape_entered"]
 [connection signal="body_entered" from="GhostBody/HitboxComponent" to="GhostBody" method="_on_hitbox_component_body_entered"]
 [connection signal="body_entered" from="GhostBody/AwarenessZone" to="GhostBody" method="_on_awareness_zone_body_entered"]
+[connection signal="body_exited" from="GhostBody/AwarenessZone" to="GhostBody" method="_on_awareness_zone_body_exited"]

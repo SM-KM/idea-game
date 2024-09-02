@@ -23,6 +23,7 @@ func _physics_process(delta: float) -> void:
 	if enemy_controller.body_entered_attack_zone:
 		if !animation_player.current_animation in ignoreAttack:
 			animateDependingOnFlippedState("attack_left", "attack")
+
 	
 	if enemy_controller.body_entered_awareness_zone:
 		enemy_controller.followPlayer(delta, self)

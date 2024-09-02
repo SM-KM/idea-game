@@ -22,6 +22,7 @@ var body_entered_attack_zone = false
 var enemyFlipped: bool
 var currentEnemyInstance: Node2D
 var global_position_enemy: Vector2
+var is_attacking: bool = false
 
 func handleEnemyDead(animation_player, awaitTimeAnimation, enemyParent, animation, enemy):
 		if enemyHealth <= 0:
@@ -40,6 +41,9 @@ func handleEnemyDead(animation_player, awaitTimeAnimation, enemyParent, animatio
 			for c in children:
 				if c is RigidBody2D:
 					c.add_child(instance)
+					
+			if enemy is Ghost:
+				enemy.add_child(instance)
 					
 			instance.reparent(enemyParent.get_parent())
 			await get_tree().create_timer(awaitTimeAnimation).timeout
@@ -94,15 +98,21 @@ func spawnBloodOnHit():
 func updateFollowSpeed(delta: float) -> void:
 	enemySpeed += 2 * delta
 	
-func followPlayer(delta, enemy):
-	#enemy.global_position = enemy.global_position.move_toward(GameManager.player.global_position, enemySpeed)
-	#updateFollowSpeed(delta)
+func set_attacking_state():
+	is_attacking = !is_attacking
 	
+func followPlayer(delta, enemy):
 	if GameManager.player != null:
 		enemyDirection = (player.global_position - enemy.global_position).normalized()
-		enemy.velocity.y = GameManager.gravity * delta
-		if abs(enemy.velocity.x) < abs(enemySpeed):
-			enemy.velocity.x += (enemyDirection.x * enemySpeed) * delta
+		
+		if enemy is Ghost:
+			enemy.velocity.y = sign(enemyDirection.y) * enemySpeed
+		
+		enemy.velocity.x = sign(enemyDirection.x) * enemySpeed	
+		if enemyDirection.x < 0 and is_attacking == false:
+			enemyFlipped = true
+		elif enemyDirection.x > 0:
+			enemyFlipped = false
 			
 		enemy.move_and_slide()
 		

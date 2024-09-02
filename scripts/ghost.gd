@@ -1,4 +1,6 @@
 extends CharacterBody2D
+class_name Ghost
+
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var enemy_controller: Enemy_controller = $"../EnemyController"
 @onready var flippable_sprite: FlippableSprite = $FlippableSprite
@@ -16,7 +18,7 @@ func _physics_process(delta: float) -> void:
 	
 	if enemy_controller.body_entered_awareness_zone:
 		enemy_controller.followPlayer(delta, self)
-		flippable_sprite.flipped = not(GameManager.playerFlipped)
+		flippable_sprite.flipped = not(enemy_controller.enemyFlipped)
 		if !animation_player.current_animation in ignoreChase:
 			animation_player.play("chase")
 	
@@ -32,7 +34,7 @@ func _on_hitbox_component_area_shape_entered(area_rid: RID, area: Area2D, area_s
 # player enter awareness zone
 func _on_awareness_zone_body_entered(body: Node2D) -> void:
 	if body.name == GameManager.playerName:
-		flippable_sprite.flipped = GameManager.playerFlipped
+		enemy_controller.enemyFlipped = not(GameManager.playerFlipped)
 		enemy_controller.body_entered_awareness_zone = true
 		scarePlayer()
 			
@@ -42,3 +44,9 @@ func scarePlayer():
 		GameManager.ReducePlayerSpeed(60)
 		await get_tree().create_timer(2).timeout
 		GameManager.ReturnPlayerSpeedToNormal()
+
+
+func _on_awareness_zone_body_exited(body: Node2D) -> void:
+	if body.name == GameManager.playerName:
+		enemy_controller.enemyFlipped = GameManager.playerFlipped
+		enemy_controller.body_entered_awareness_zone = false

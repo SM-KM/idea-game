@@ -78,6 +78,7 @@ var NightMareSpawnPointsAmount: int
 var StrikerWaveSpawnPointsAmount: int
 var StrikerSpawnPointsAmount: int
 
+var allInitialSpawnPoints: Dictionary = {}
 
 @export var playerSpeed: int  = 140.0
 @export var playerJumpVelocity: float = -300.0
@@ -125,42 +126,53 @@ func _ready() -> void:
 	# BurningGhoul
 	BurningGhoulWaveSpawnPointsAmount = BurningGhoulWaveSpawnPoints.size()
 	BurningGhoulSpawnPointsAmount = BurningGhoulSpawnPoints.size()
+	allInitialSpawnPoints[EnemyType.BurningGhoul] = BurningGhoulSpawnPoints
 
 	# NightBorne
 	NightBorneWaveSpawnPointsAmount = NightBorneWaveSpawnPoints.size()
 	NightBorneSpawnPointsAmount = NightBorneSpawnPoints.size()
+	allInitialSpawnPoints[EnemyType.NightBorne] = NightBorneSpawnPoints
 	
 	# Bringer of the Death
 	BringerOfDeathWaveSpawnPointsAmount = BringerOfDeathWaveSpawnPoints.size()
 	BringerOfDeathSpawnPointsAmount = BringerOfDeathSpawnPoints.size()
+	allInitialSpawnPoints[EnemyType.BringerOfDeath] = BringerOfDeathSpawnPoints
 	
 	# Demon
 	DemonWaveSpawnPointsAmount = DemonWaveSpawnPoints.size()
 	DemonSpawnPointsAmount = DemonSpawnPoints.size()
+	allInitialSpawnPoints[EnemyType.Demon] = DemonSpawnPoints
 	
 	# Ghost
 	GhostWaveSpawnPointsAmount = GhostWaveSpawnPoints.size()
 	GhostSpawnPointsAmount = GhostSpawnPoints.size()
+	allInitialSpawnPoints[EnemyType.Ghost] = GhostSpawnPoints
 	
 	# FireSkull
 	FireSkullWaveSpawnPointsAmount = FireSkullWaveSpawnPoints.size()
 	FireSkullSpawnPointsAmount = FireSkullSpawnPoints.size()
+	allInitialSpawnPoints[EnemyType.FireSkull] = FireSkullSpawnPoints
 	
 	# Hell Beast
 	HellBeastWaveSpawnPointsAmount = HellBeastWaveSpawnPoints.size()
 	HellBeastSpawnPointsAmount = HellBeastSpawnPoints.size()
+	allInitialSpawnPoints[EnemyType.HellBeast] = HellBeastSpawnPoints
 	
 	# Hell Bound
 	HellBoundWaveSpawnPointsAmount = HellBoundWaveSpawnPoints.size()
 	HellBoundSpawnPointsAmount = HellBoundSpawnPoints.size()
+	allInitialSpawnPoints[EnemyType.HellBound] = HellBoundSpawnPoints
 	
 	# NightMare
 	NightMareWaveSpawnPointsAmount = NightMareWaveSpawnPoints.size()
 	NightMareSpawnPointsAmount = NightMareSpawnPoints.size()
+	allInitialSpawnPoints[EnemyType.NightMare] = NightMareSpawnPoints
 	
 	# Striker
 	StrikerWaveSpawnPointsAmount = StrikerWaveSpawnPoints.size()
 	StrikerSpawnPointsAmount = StrikerSpawnPoints.size()
+	allInitialSpawnPoints[EnemyType.Striker] = StrikerSpawnPoints
+	
 	
 	nodes = get_tree().get_nodes_in_group("enemy_waves")
 	var count = 0
@@ -172,7 +184,6 @@ func _ready() -> void:
 	starting_nodes = get_tree().get_first_node_in_group("enemy_waves").get_child_count() + nodes_children
 	current_nodes = get_tree().get_first_node_in_group("enemy_waves").get_child_count() + nodes_children
 	position_to_next_wave()
-	
 	respawn_player()
 
 func position_to_next_wave():
@@ -287,7 +298,11 @@ func spawn_type(type, mob_spawn_rounds, mob_wait_time):
 func respawn_player():
 	if current_checkpoint != null:
 		player.position = current_checkpoint.global_position
-	
+		
+func instantiateAllInitialSpawnPoints():
+	pass
+			
+			
 func _process(delta: float) -> void:		
 	if wave_spawn_ended and spawnersAvailable:
 		nodes = get_tree().get_nodes_in_group("enemy_waves")

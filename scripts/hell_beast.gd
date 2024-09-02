@@ -29,7 +29,7 @@ func shoot():
 	var x = -20 if enemy_controller.enemyFlipped else 20
 	
 	instance.dir = rotation
-	instance.spawnPos = Vector2(global_position.x - x, global_position.y + 15)
+	instance.spawnPos = Vector2(global_position.x - x, global_position.y + 25)
 	instance.spawnRot = rotation
 	instance.flipped = enemy_controller.enemyFlipped
 	instance.zdex = z_index

@@ -1,6 +1,6 @@
 extends RigidBody2D
 
-@onready var enemy_controller: Node = %EnemyController
+@onready var enemy_controller: Node = %EnemyManager
 @onready var health_bar: ProgressBar = $HealthBar
 
 # Called when the node enters the scene tree for the first time.

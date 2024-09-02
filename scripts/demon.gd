@@ -3,22 +3,17 @@ extends CharacterBody2D
 @onready var enemy_controller: Enemy_controller = %EnemyManager
 @onready var sprite: FlippableSprite = $RigidBody2D/FlippableSprite
 @onready var animation_player: AnimationPlayer = $RigidBody2D/AnimationPlayer
-@onready var health_bar: ProgressBar = $HealthBar
 
 var ignoreIdle = ["attack", "attack_left"]
 var timeout = 0.5
 
-func _ready() -> void:
-	health_bar.initializeHealthBar(enemy_controller.enemyHealth,enemy_controller.max_enemyHealth, enemy_controller.min_enemyHealth)
-	
 func _physics_process(delta: float) -> void:
-	health_bar.initializeHealthBar(enemy_controller.enemyHealth,enemy_controller.max_enemyHealth, enemy_controller.min_enemyHealth)
 	if not is_instance_valid(sprite):
 		return
 	
 	if enemy_controller.body_entered_awareness_zone:
 		enemy_controller.followPlayer(delta, self)
-		sprite.flipped = enemy_controller.enemyFlipped
+		sprite.flipped = not(enemy_controller.enemyFlipped)
 			
 	if enemy_controller.body_entered_attack_zone:
 		animateDependingOnFlippedState("attack", "attack_left")

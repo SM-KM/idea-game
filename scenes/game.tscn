@@ -1,4 +1,4 @@
-[gd_scene load_steps=80 format=4 uid="uid://6gn25wmmkopa"]
+[gd_scene load_steps=79 format=4 uid="uid://6gn25wmmkopa"]
 
 [ext_resource type="Texture2D" uid="uid://5yht68pxcvdr" path="res://assets/gothicvania church/assets/environment/tileset.png" id="1_fgt7n"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_k12q8"]
@@ -8,7 +8,6 @@
 [ext_resource type="Script" path="res://scripts/ui_manager.gd" id="3_abl2g"]
 [ext_resource type="Texture2D" uid="uid://deg32iybdmi1b" path="res://assets/UI/pkey.png" id="3_f0y7q"]
 [ext_resource type="Texture2D" uid="uid://coimhpntj65hx" path="res://assets/GothicVania-town-files/PNG/environment/environment-preview.png" id="3_gaiv2"]
-[ext_resource type="PackedScene" uid="uid://c1sydo80htnln" path="res://scenes/burning_ghoul.tscn" id="3_jqar1"]
 [ext_resource type="PackedScene" uid="uid://dacpg4dmirmk7" path="res://scenes/Util/enemy_spawner.tscn" id="3_t7su0"]
 [ext_resource type="Texture2D" uid="uid://bjt1s2pxjakgc" path="res://assets/UI/arrowkeys.png" id="4_gm42a"]
 [ext_resource type="Script" path="res://scripts/Util/spawn_info.gd" id="4_gqfnb"]
@@ -3473,20 +3472,14 @@ position = Vector2(-305, -301)
 [node name="Enemies" type="Node" parent="."]
 
 [node name="Striker" parent="Enemies" instance=ExtResource("9_58d0b")]
-position = Vector2(293, -268)
-
-[node name="BurningGhoul" parent="Enemies" instance=ExtResource("3_jqar1")]
-position = Vector2(81, -245)
-
-[node name="BurningGhoul2" parent="Enemies" instance=ExtResource("3_jqar1")]
-position = Vector2(-461, -248)
+position = Vector2(433, -234)
 
 [node name="Loot" type="Node" parent="."]
 
 [node name="Checkpoints" type="Node" parent="."]
 
 [node name="DefaultCheckPoint" parent="Checkpoints" instance=ExtResource("9_7nvwc")]
-position = Vector2(-271, -220)
+position = Vector2(-273, -220)
 spawnpoint = true
 
 [node name="WaveSpawnPoints" type="Node" parent="." groups=["enemy_waves"]]
@@ -3514,6 +3507,8 @@ spawnpoint = true
 [node name="SpawnPoints" type="Node" parent="."]
 
 [node name="GhostSpawnPoints" type="Node" parent="SpawnPoints"]
+
+[node name="Marker2D" type="Marker2D" parent="SpawnPoints/GhostSpawnPoints" groups=["ghost_sp"]]
 
 [node name="BurningGhoulSpawnPoints" type="Node" parent="SpawnPoints"]
 

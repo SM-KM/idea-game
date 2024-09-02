@@ -6,7 +6,8 @@
 [sub_resource type="Theme" id="Theme_maj61"]
 default_font = ExtResource("1_ubu40")
 default_font_size = 16
-Button/font_sizes/font_size = 16
+Button/font_sizes/font_size = 32
+Label/font_sizes/font_size = 32
 
 [node name="PausedMenu" type="Control"]
 process_mode = 3
