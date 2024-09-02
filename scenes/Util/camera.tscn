@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://clv1cyi7f5oo"]
+
+[ext_resource type="Script" path="res://scripts/Util/camera.gd" id="1_tbknj"]
+[ext_resource type="Script" path="res://scripts/Util/camera_limit_manager.gd" id="2_p8oe7"]
+
+[node name="Camera" type="Camera2D"]
+position = Vector2(0, -1)
+zoom = Vector2(2, 2)
+script = ExtResource("1_tbknj")
+
+[node name="CameraLimitManager" type="Node2D" parent="."]
+script = ExtResource("2_p8oe7")

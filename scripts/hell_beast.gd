@@ -17,12 +17,13 @@ func _ready() -> void:
 	
 func _process(delta: float) -> void:
 	health_bar.updateHealthBar(enemy_controller.enemyHealth,enemy_controller.max_enemyHealth, enemy_controller.min_enemyHealth)
-
 	
-func _physics_process(delta: float) -> void:
-	if !animation_player.current_animation in ignoreIdle:
-		animation_player.play("idle")
-
+func _physics_process(delta: float) -> void:	
+	if is_instance_valid(animation_player):
+		if !animation_player.current_animation in ignoreIdle:
+			animation_player.play("idle")
+	
+		
 func shoot():
 	var instance = projectile.instantiate()
 	var x = -20 if enemy_controller.enemyFlipped else 20

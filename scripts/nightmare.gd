@@ -9,6 +9,9 @@ var ignoreIdle = ["galloping", "powerUpfx"]
 var ignoreGalloping = ["powerUpfx"]
 
 func _physics_process(delta: float) -> void:
+	if not is_instance_valid(animation_player):
+		return
+	
 	if awareness_entered:
 		if !animation_player.current_animation in ignoreGalloping:
 			animation_player.play("galloping")

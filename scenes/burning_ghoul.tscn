@@ -207,6 +207,7 @@ enemySpeed = 50
 script = ExtResource("1_jul0o")
 
 [node name="RigidBody2D" type="RigidBody2D" parent="BurningGhoul"]
+lock_rotation = true
 
 [node name="Collider" type="CollisionShape2D" parent="BurningGhoul/RigidBody2D"]
 position = Vector2(-3, 10)

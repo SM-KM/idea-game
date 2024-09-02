@@ -11,6 +11,9 @@ func _ready() -> void:
 	health_bar.initializeHealthBar(enemy_controller.enemyHealth,enemy_controller.max_enemyHealth, enemy_controller.min_enemyHealth)
 
 func _physics_process(delta: float) -> void:
+	if not is_instance_valid(animation_player):
+		return
+	
 	health_bar.updateHealthBar(enemy_controller.enemyHealth,enemy_controller.max_enemyHealth, enemy_controller.min_enemyHealth)
 	if !animation_player.current_animation in ignoreIdle:
 		animation_player.play("idle")

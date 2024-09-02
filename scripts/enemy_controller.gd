@@ -7,6 +7,7 @@ class_name Enemy_controller
 @export var enemySpeed = 60
 @export var enemyDirection = 1
 @export var enemyDamage = 5
+@export var enemyGlobalPosition = Vector2.ZERO
 
 @onready var player = get_tree().get_first_node_in_group("player")
 signal playerHit(damageAmount)
@@ -23,26 +24,24 @@ var enemyFlipped: bool
 var currentEnemyInstance: Node2D
 var global_position_enemy: Vector2
 
-func handleEnemyDead(animation_player, awaitTimeAnimation, enemyParent, animation, global_position):
+func handleEnemyDead(animation_player, awaitTimeAnimation, enemyParent, animation, enemy):
 		if enemyHealth <= 0:
 			body_entered_attack_zone = false
 			body_entered_awareness_zone = false
 			body_exited_attack_zone = false
-			
-			var parent = enemyParent.get_parent()
-			var instance = parchment.instantiate()
-			instance.global_position = global_position
 			animation_player.play(animation)
 			
 			# Ensure animation is actually playing
 			if not animation_player.is_playing():
 				print("Animation is not playing!")
 			
+			# instance of parchment
+			var instance = parchment.instantiate()
+			enemy.add_child(instance)
+			instance.reparent(enemyParent.get_parent())
 			await get_tree().create_timer(awaitTimeAnimation).timeout
 			enemyParent.queue_free()
 			
-			# instance of parchment
-			parent.add_child(instance)
 			
 
 func handlePlayerHitOnEnemy(animation_player: AnimationPlayer, animation: String, enemyParent: Node2D, awaitTimeAnimation: float, global_position, enemy):
@@ -52,10 +51,10 @@ func handlePlayerHitOnEnemy(animation_player: AnimationPlayer, animation: String
 	if enemyHealth > min_enemyHealth:
 		if GameManager.currentAttackType == GameManager.AttackType.Kick:
 			reduceEnemyHealth(GameManager.kickDamage)
-			handleEnemyDead(animation_player, awaitTimeAnimation, enemyParent, animation, global_position)
+			handleEnemyDead(animation_player, awaitTimeAnimation, enemyParent, animation, enemy)
 		elif GameManager.currentAttackType == GameManager.AttackType.Punch:
 			reduceEnemyHealth(GameManager.punchDamage)
-			handleEnemyDead(animation_player, awaitTimeAnimation, enemyParent, animation, global_position)
+			handleEnemyDead(animation_player, awaitTimeAnimation, enemyParent, animation, enemy)
 
 
 func reduceEnemyHealth(amount):

@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name BurningGhoul
 
 @onready var enemy_controller: Node = $"../EnemyManager"
 @onready var animation_player: AnimationPlayer = $RigidBody2D/AnimationPlayer
@@ -13,6 +14,8 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	health_bar.updateHealthBar(enemy_controller.enemyHealth,enemy_controller.max_enemyHealth, enemy_controller.min_enemyHealth)
+	if not is_instance_valid(sprite):
+		return
 	
 	if enemy_controller.enemyHealth <= 0:
 		animation_player.play("explote")
@@ -31,7 +34,7 @@ func _on_explosion_radius_body_entered(body: Node2D) -> void:
 	if body.name == GameManager.playerName:
 		animation_player.play("explote")
 		await get_tree().create_timer(timerTime).timeout
-		queue_free()
+		self.owner.queue_free()
 		
 func _on_explosion_radius_body_exited(body: Node2D) -> void:
 	if body.name == GameManager.playerName:

@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://ontmvpbad3o2"]
 
 [ext_resource type="Texture2D" uid="uid://xwj1xo0cwt8o" path="res://assets/UI/GUI.png" id="1_dm4uo"]
-[ext_resource type="Script" path="res://scenes/UI/gui.gd" id="2_hygqw"]
+[ext_resource type="Script" path="res://scripts/UI/gui.gd" id="2_hygqw"]
 [ext_resource type="FontFile" uid="uid://g4pbjnt4ulgy" path="res://assets/fonts/PixelOperator8.ttf" id="3_yb7ci"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2uajf"]

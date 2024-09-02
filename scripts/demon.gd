@@ -13,6 +13,8 @@ func _ready() -> void:
 	
 func _physics_process(delta: float) -> void:
 	health_bar.initializeHealthBar(enemy_controller.enemyHealth,enemy_controller.max_enemyHealth, enemy_controller.min_enemyHealth)
+	if not is_instance_valid(sprite):
+		return
 	
 	if enemy_controller.body_entered_awareness_zone:
 		enemy_controller.followPlayer(delta, self)

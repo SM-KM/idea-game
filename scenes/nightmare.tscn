@@ -10,7 +10,7 @@
 size = Vector2(74, 65)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6ck0g"]
-size = Vector2(236, 62)
+size = Vector2(136, 62)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4dqxh"]
 radius = 474.004
@@ -268,7 +268,7 @@ _data = {
 "powerUpfx": SubResource("Animation_q8yne")
 }
 
-[node name="Nightmare" type="Node2D"]
+[node name="Nightmare" type="Node2D" groups=["enemy"]]
 
 [node name="Nightmare" type="CharacterBody2D" parent="."]
 script = ExtResource("1_c3uen")

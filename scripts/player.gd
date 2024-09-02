@@ -5,9 +5,9 @@ class_name Player
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var player_collision: CollisionShape2D = $PlayerCollider
 @onready var flippable_shape: FlippableShape = $PlayerHitbox/FlippableShape
-@onready var health_bar: ProgressBar = $HealthBar
 @onready var regen_cooldown: Timer = $RegenCooldown
 @onready var stamina_cooldown: Timer = $StaminaCooldown
+@onready var camera: Camera = $Camera
 
 var speedUpdated: bool = false
 var lastFlippedValue = false
@@ -18,7 +18,7 @@ var ignoreCrouch = ["crouch_kick", "crouch_kick_left", "hurt"]
 var ignoreJump = ["flykick", "flykick_left", "hurt"]
 
 func _ready() -> void:
-	pass
+	GameManager.camera = camera
 	# health_bar.initializeHealthBar(GameManager.player_health, GameManager.max_player_health, GameManager.min_player_health)
 
 func _physics_process(delta: float) -> void:
@@ -133,6 +133,7 @@ func _on_collect_area_area_entered(area: Area2D) -> void:
 	if area.is_in_group("loot"):
 		var exp = area.collect()
 		GameManager.calculateExperience(exp)
+		area.queue_free()
 
 
 func _on_regen_cooldown_timeout() -> void:
@@ -141,3 +142,9 @@ func _on_regen_cooldown_timeout() -> void:
 
 func _on_stamina_cooldown_timeout() -> void:
 	GameManager.restoreStamina()
+
+
+func _on_interactions_area_entered(area: Area2D) -> void:
+	if area is CameraLimiter:
+		pass
+		# camera.camera_limit_manager.set_limiter(area)

@@ -11,18 +11,17 @@ var ignoreRun = ["attack", "attack_left","hurt, dead"]
 var ignoreAttack = ["hurt,", "attack_left","dead"]
 var timeout: float = 0.5
 
-func _ready() -> void:
-	health_bar.initializeHealthBar(enemy_controller.enemyHealth,enemy_controller.max_enemyHealth, enemy_controller.min_enemyHealth)
 
 func _physics_process(delta: float) -> void:
-	health_bar.updateHealthBar(enemy_controller.enemyHealth,enemy_controller.max_enemyHealth, enemy_controller.min_enemyHealth)
+	if not is_instance_valid(animation_player):
+		return
 	
 	if enemy_controller.enemyHealth <= 0:
 		# Ensure we don't overwrite the dead animation
 		if animation_player.current_animation != "dead":
 			animation_player.play("dead")
 		return 
-	
+		
 	if enemy_controller.body_entered_awareness_zone:
 		enemy_controller.followPlayer(delta, self)
 		sprite.flipped = enemy_controller.enemyFlipped
