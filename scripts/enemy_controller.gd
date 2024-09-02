@@ -10,7 +10,6 @@ class_name Enemy_controller
 @export var enemyGlobalPosition = Vector2.ZERO
 
 @onready var player = get_tree().get_first_node_in_group("player")
-signal playerHit(damageAmount)
 
 const damage_indicator = preload("res://scenes/UI/damage_indicator.tscn")
 const parchment = preload("res://scenes/items/parchment.tscn")
@@ -37,7 +36,11 @@ func handleEnemyDead(animation_player, awaitTimeAnimation, enemyParent, animatio
 			
 			# instance of parchment
 			var instance = parchment.instantiate()
-			enemy.add_child(instance)
+			var children = currentEnemyInstance.get_children()
+			for c in children:
+				if c is RigidBody2D:
+					c.add_child(instance)
+					
 			instance.reparent(enemyParent.get_parent())
 			await get_tree().create_timer(awaitTimeAnimation).timeout
 			enemyParent.queue_free()
@@ -72,14 +75,21 @@ func spawnDamageIndicator(amount: int):
 	instance.z_index = currentEnemyInstance.z_index + 1
 	instance.text = str(amount)
 	instance.global_position = global_position_enemy
-	currentEnemyInstance.add_child(instance)
+	var children = currentEnemyInstance.get_children()
+	for c in children:
+		if c is RigidBody2D:
+			c.add_child(instance)
 	
 func spawnBloodOnHit():
 	var instance = blood.instantiate()
-	var lowerY = Vector2(global_position_enemy.x, global_position_enemy.y + 20)
+	var lowerY = Vector2(global_position_enemy.x, global_position_enemy.y)
 	instance.z_index = currentEnemyInstance.z_index + 1
 	instance.global_position = lowerY
-	currentEnemyInstance.add_child(instance)
+	var children = currentEnemyInstance.get_children()
+	for c in children:
+		if c is RigidBody2D:
+			c.add_child(instance)
+	
 
 func updateFollowSpeed(delta: float) -> void:
 	enemySpeed += 2 * delta
@@ -87,10 +97,15 @@ func updateFollowSpeed(delta: float) -> void:
 func followPlayer(delta, enemy):
 	#enemy.global_position = enemy.global_position.move_toward(GameManager.player.global_position, enemySpeed)
 	#updateFollowSpeed(delta)
+	
 	if GameManager.player != null:
-		var direction = enemy.global_position.direction_to(GameManager.player.global_position)
-		enemy.velocity = direction * enemySpeed
+		enemyDirection = (player.global_position - enemy.global_position).normalized()
+		enemy.velocity.y = GameManager.gravity * delta
+		if abs(enemy.velocity.x) < abs(enemySpeed):
+			enemy.velocity.x += (enemyDirection.x * enemySpeed) * delta
+			
 		enemy.move_and_slide()
+		
 		
 	
 	

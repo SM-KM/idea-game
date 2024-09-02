@@ -83,6 +83,7 @@ var StrikerSpawnPointsAmount: int
 @export var playerJumpVelocity: float = -300.0
 @export var experience: int = 0
 @export var currentAttackType: AttackType = AttackType.None
+@export var gravity: int = 1500
 
 var defaultPlayerSpeed = 140.0
 var defaultJumpVelocity = -300.0
@@ -114,6 +115,7 @@ var moving_to_next_wave: bool
 var nodes: Array[Node]
 var nodes_children = 0
 var spawnersAvailable: bool
+var wait_time_between_mobs: float = 2.0
 
 # checkpoints 
 @export var current_checkpoint: CheckPoint
@@ -180,12 +182,12 @@ func position_to_next_wave():
 		wave_spawn_ended = false
 		current_wave += 1
 		print(current_wave)
-		prepare_spawn(EnemyType.BurningGhoul, 2, BurningGhoulWaveSpawnPointsAmount)
+		prepare_spawn(EnemyType.BurningGhoul, 0, BurningGhoulWaveSpawnPointsAmount)
 		prepare_spawn(EnemyType.NightBorne, 0, NightBorneWaveSpawnPointsAmount)
 
 func prepare_spawn(type: EnemyType, multiplier: float, mob_spawns: int):
 	var mob_amount = float(current_wave) * multiplier
-	var mob_wait_time: float = 2.0
+	var mob_wait_time: float = wait_time_between_mobs
 	var mob_spawn_rounds = mob_amount / mob_spawns
 	spawn_type(type, mob_spawn_rounds, mob_wait_time)
 
@@ -209,14 +211,84 @@ func spawn_type(type, mob_spawn_rounds, mob_wait_time):
 					NightBorneWaveSpawnPoints[spawnIndex].add_child(nightBorne)
 				mob_spawn_rounds -= 1
 				await get_tree().create_timer(mob_wait_time).timeout
+				
+	if type == EnemyType.BringerOfDeath:
+		if mob_spawn_rounds >= 1 and BringerOfDeathWaveSpawnPointsAmount > 0:
+			for i in mob_spawn_rounds:
+				for spawnIndex in range(0, BringerOfDeathWaveSpawnPointsAmount):
+					var bringerOfDeath = bringerOfDeathScene.instantiate()
+					bringerOfDeath.global_position = BringerOfDeathWaveSpawnPoints[spawnIndex].global_position
+					BringerOfDeathWaveSpawnPoints[spawnIndex].add_child(bringerOfDeath)
+				mob_spawn_rounds -= 1
+				await get_tree().create_timer(mob_wait_time).timeout
+				
+	if type == EnemyType.Demon:
+		if mob_spawn_rounds >= 1 and DemonWaveSpawnPointsAmount > 0:
+			for i in mob_spawn_rounds:
+				for spawnIndex in range(0, DemonWaveSpawnPointsAmount):
+					var demon = demonScene.instantiate()
+					demon.global_position = DemonWaveSpawnPoints[spawnIndex].global_position
+					DemonWaveSpawnPoints[spawnIndex].add_child(demon)
+				mob_spawn_rounds -= 1
+				await get_tree().create_timer(mob_wait_time).timeout
+				
+	if type == EnemyType.FireSkull:
+		if mob_spawn_rounds >= 1 and FireSkullWaveSpawnPointsAmount > 0:
+			for i in mob_spawn_rounds:
+				for spawnIndex in range(0, FireSkullWaveSpawnPointsAmount):
+					var fireSkull = demonScene.instantiate()
+					fireSkull.global_position = FireSkullWaveSpawnPoints[spawnIndex].global_position
+					FireSkullWaveSpawnPoints[spawnIndex].add_child(fireSkull)
+				mob_spawn_rounds -= 1
+				await get_tree().create_timer(mob_wait_time).timeout
+				
+	if type == EnemyType.HellBeast:
+		if mob_spawn_rounds >= 1 and HellBeastWaveSpawnPointsAmount > 0:
+			for i in mob_spawn_rounds:
+				for spawnIndex in range(0, HellBeastWaveSpawnPointsAmount):
+					var hellBeast = demonScene.instantiate()
+					hellBeast.global_position = HellBeastWaveSpawnPoints[spawnIndex].global_position
+					HellBeastWaveSpawnPoints[spawnIndex].add_child(hellBeast)
+				mob_spawn_rounds -= 1
+				await get_tree().create_timer(mob_wait_time).timeout
+				
+	if type == EnemyType.HellBound:
+		if mob_spawn_rounds >= 1 and HellBoundWaveSpawnPointsAmount > 0:
+			for i in mob_spawn_rounds:
+				for spawnIndex in range(0, HellBoundWaveSpawnPointsAmount):
+					var hellBound = demonScene.instantiate()
+					hellBound.global_position = HellBoundWaveSpawnPoints[spawnIndex].global_position
+					HellBoundWaveSpawnPoints[spawnIndex].add_child(hellBound)
+				mob_spawn_rounds -= 1
+				await get_tree().create_timer(mob_wait_time).timeout
+	
+	if type == EnemyType.NightMare:
+		if mob_spawn_rounds >= 1 and NightMareWaveSpawnPointsAmount > 0:
+			for i in mob_spawn_rounds:
+				for spawnIndex in range(0, NightMareWaveSpawnPointsAmount):
+					var nightMare = demonScene.instantiate()
+					nightMare.global_position = NightMareWaveSpawnPoints[spawnIndex].global_position
+					NightMareWaveSpawnPoints[spawnIndex].add_child(nightMare)
+				mob_spawn_rounds -= 1
+				await get_tree().create_timer(mob_wait_time).timeout
+				
+	if type == EnemyType.Striker:
+		if mob_spawn_rounds >= 1 and StrikerWaveSpawnPointsAmount > 0:
+			for i in mob_spawn_rounds:
+				for spawnIndex in range(0, StrikerWaveSpawnPointsAmount):
+					var striker = demonScene.instantiate()
+					striker.global_position = StrikerWaveSpawnPoints[spawnIndex].global_position
+					StrikerWaveSpawnPoints[spawnIndex].add_child(striker)
+				mob_spawn_rounds -= 1
+				await get_tree().create_timer(mob_wait_time).timeout
 
 	wave_spawn_ended = true
 
 func respawn_player():
 	if current_checkpoint != null:
 		player.position = current_checkpoint.global_position
-
-func _process(delta: float) -> void:	
+	
+func _process(delta: float) -> void:		
 	if wave_spawn_ended and spawnersAvailable:
 		nodes = get_tree().get_nodes_in_group("enemy_waves")
 		var count = 0
@@ -227,6 +299,7 @@ func _process(delta: float) -> void:
 		# print(starting_nodes, current_nodes, count)
 		current_nodes = get_tree().get_first_node_in_group("enemy_waves").get_child_count() + count
 		position_to_next_wave()
+		
 		
 	
 	if Input.is_action_just_pressed("kick"):

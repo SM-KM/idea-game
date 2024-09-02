@@ -1,4 +1,4 @@
-[gd_scene load_steps=122 format=3 uid="uid://cwbjbjkjrm1k6"]
+[gd_scene load_steps=123 format=3 uid="uid://cwbjbjkjrm1k6"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_qnwkt"]
 [ext_resource type="Script" path="res://scripts/Util/power_up_visual_effect.gd" id="2_nlxkt"]
@@ -97,6 +97,7 @@
 [ext_resource type="Texture2D" uid="uid://w8kdp574wn2a" path="res://assets/Mini Fires 2/6/30.png" id="62_ofry2"]
 [ext_resource type="PackedScene" uid="uid://ontmvpbad3o2" path="res://scenes/UI/gui.tscn" id="96_4mh4c"]
 [ext_resource type="PackedScene" uid="uid://clv1cyi7f5oo" path="res://scenes/Util/camera.tscn" id="96_817tp"]
+[ext_resource type="PackedScene" uid="uid://67a08rcoks37" path="res://scenes/UI/paused_menu.tscn" id="98_17kg3"]
 
 [sub_resource type="Animation" id="Animation_3klqm"]
 length = 0.001
@@ -747,6 +748,7 @@ tracks/5/keys = {
 
 [sub_resource type="Animation" id="Animation_ck2km"]
 resource_name = "flykick"
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -1879,11 +1881,15 @@ shape = SubResource("RectangleShape2D_qjrp6")
 debug_color = Color(0.289197, 0.608983, 0.462891, 0.42)
 
 [node name="GUI" parent="." instance=ExtResource("96_4mh4c")]
-position = Vector2(-246, -171)
-scale = Vector2(1.625, 1.625)
+position = Vector2(-249.978, -172.375)
+scale = Vector2(1.52679, 1.52679)
 
 [node name="Camera" parent="." instance=ExtResource("96_817tp")]
 editor_draw_limits = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PausedMenu" parent="CanvasLayer" instance=ExtResource("98_17kg3")]
 
 [connection signal="area_entered" from="GrabArea" to="." method="_on_grab_area_area_entered"]
 [connection signal="area_entered" from="CollectArea" to="." method="_on_collect_area_area_entered"]

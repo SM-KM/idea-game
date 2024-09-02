@@ -1,0 +1,64 @@
+[gd_scene load_steps=4 format=3 uid="uid://67a08rcoks37"]
+
+[ext_resource type="FontFile" uid="uid://g4pbjnt4ulgy" path="res://assets/fonts/PixelOperator8.ttf" id="1_ubu40"]
+[ext_resource type="Script" path="res://scripts/UI/paused_menu.gd" id="2_jieh0"]
+
+[sub_resource type="Theme" id="Theme_maj61"]
+default_font = ExtResource("1_ubu40")
+default_font_size = 16
+Button/font_sizes/font_size = 16
+
+[node name="PausedMenu" type="Control"]
+process_mode = 3
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_maj61")
+script = ExtResource("2_jieh0")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.333333, 0.333333, 0.333333, 0.709804)
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.0
+offset_top = -50.0
+offset_right = 48.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/v_separation = 7
+
+[node name="Label" type="Label" parent="GridContainer"]
+layout_mode = 2
+text = "Paused
+
+"
+horizontal_alignment = 1
+
+[node name="ResumeBtn" type="Button" parent="GridContainer"]
+layout_mode = 2
+text = "Resume"
+
+[node name="QuitBtn" type="Button" parent="GridContainer"]
+layout_mode = 2
+text = "Quit
+"
+
+[connection signal="pressed" from="GridContainer/ResumeBtn" to="." method="_on_resume_btn_pressed"]
+[connection signal="pressed" from="GridContainer/QuitBtn" to="." method="_on_quit_btn_pressed"]

@@ -26,7 +26,7 @@ size = Vector2(26, 40)
 radius = 28.0713
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ryfoq"]
-radius = 157.003
+radius = 187.003
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_scq50"]
 size = Vector2(26, 40)
@@ -201,7 +201,11 @@ unique_name_in_owner = true
 script = ExtResource("1_u5pvu")
 enemyHealth = 20
 max_enemyHealth = 20
-enemySpeed = 70
+min_enemyHealth = null
+enemySpeed = null
+enemyDirection = null
+enemyDamage = null
+enemyGlobalPosition = null
 
 [node name="BurningGhoul" type="CharacterBody2D" parent="."]
 script = ExtResource("1_jul0o")
