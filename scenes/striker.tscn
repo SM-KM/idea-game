@@ -983,7 +983,7 @@ script = ExtResource("1_lnlx3")
 enemyHealth = 140
 max_enemyHealth = 140
 enemySpeed = 75
-enemyDamage = 40
+enemyDamage = 30
 
 [node name="Striker" type="CharacterBody2D" parent="."]
 script = ExtResource("2_rrlwb")

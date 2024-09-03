@@ -22,6 +22,9 @@ func _ready() -> void:
 	# health_bar.initializeHealthBar(GameManager.player_health, GameManager.max_player_health, GameManager.min_player_health)
 
 func _physics_process(delta: float) -> void:
+	if not is_instance_valid(animation_player):
+		return
+	
 	# health_bar.updateHealthBar(GameManager.player_health, GameManager.max_player_health, GameManager.min_player_health)
 	if regen_cooldown.wait_time == GameManager.regeneration_cooldown_amount:
 		if GameManager.player_health < GameManager.max_player_health and GameManager.playerDamaged and !GameManager.regenCooldownStarted:
@@ -44,7 +47,7 @@ func _physics_process(delta: float) -> void:
 
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
+		velocity.y = JUMP_VELOCITY * 1.1
 		
 	if Input.is_action_just_released("crouch"):
 		SPEED = defaultSpeed

@@ -94,6 +94,9 @@ var regenCooldownStarted: bool
 var PowerUpActive: String
 var activeEffects: Dictionary
 
+# ui events
+var teleport_to_game_start: bool = false
+
 # Spawn points and waves system
 var current_wave: int
 
@@ -120,58 +123,60 @@ var wait_time_between_mobs: float = 2.0
 
 # checkpoints 
 @export var current_checkpoint: CheckPoint
+@export var start_game_checkpoint: CheckPoint
 
 func _ready() -> void:
+	
 	# initializeSpawners
 	# BurningGhoul
 	BurningGhoulWaveSpawnPointsAmount = BurningGhoulWaveSpawnPoints.size()
 	BurningGhoulSpawnPointsAmount = BurningGhoulSpawnPoints.size()
-	allInitialSpawnPoints[EnemyType.BurningGhoul] = BurningGhoulSpawnPoints
+	allInitialSpawnPoints[EnemyType.BurningGhoul] = [BurningGhoulSpawnPoints, burningGhoulScene]
 
 	# NightBorne
 	NightBorneWaveSpawnPointsAmount = NightBorneWaveSpawnPoints.size()
 	NightBorneSpawnPointsAmount = NightBorneSpawnPoints.size()
-	allInitialSpawnPoints[EnemyType.NightBorne] = NightBorneSpawnPoints
+	allInitialSpawnPoints[EnemyType.NightBorne] = [NightBorneSpawnPoints, nightBorneScene]
 	
 	# Bringer of the Death
 	BringerOfDeathWaveSpawnPointsAmount = BringerOfDeathWaveSpawnPoints.size()
 	BringerOfDeathSpawnPointsAmount = BringerOfDeathSpawnPoints.size()
-	allInitialSpawnPoints[EnemyType.BringerOfDeath] = BringerOfDeathSpawnPoints
+	allInitialSpawnPoints[EnemyType.BringerOfDeath] = [BringerOfDeathSpawnPoints, bringerOfDeathScene]
 	
 	# Demon
 	DemonWaveSpawnPointsAmount = DemonWaveSpawnPoints.size()
 	DemonSpawnPointsAmount = DemonSpawnPoints.size()
-	allInitialSpawnPoints[EnemyType.Demon] = DemonSpawnPoints
+	allInitialSpawnPoints[EnemyType.Demon] = [DemonSpawnPoints, demonScene]
 	
 	# Ghost
 	GhostWaveSpawnPointsAmount = GhostWaveSpawnPoints.size()
 	GhostSpawnPointsAmount = GhostSpawnPoints.size()
-	allInitialSpawnPoints[EnemyType.Ghost] = GhostSpawnPoints
+	allInitialSpawnPoints[EnemyType.Ghost] = [GhostSpawnPoints, ghostScene]
 	
 	# FireSkull
 	FireSkullWaveSpawnPointsAmount = FireSkullWaveSpawnPoints.size()
 	FireSkullSpawnPointsAmount = FireSkullSpawnPoints.size()
-	allInitialSpawnPoints[EnemyType.FireSkull] = FireSkullSpawnPoints
+	allInitialSpawnPoints[EnemyType.FireSkull] = [FireSkullSpawnPoints, fireSkullScene]
 	
 	# Hell Beast
 	HellBeastWaveSpawnPointsAmount = HellBeastWaveSpawnPoints.size()
 	HellBeastSpawnPointsAmount = HellBeastSpawnPoints.size()
-	allInitialSpawnPoints[EnemyType.HellBeast] = HellBeastSpawnPoints
+	allInitialSpawnPoints[EnemyType.HellBeast] = [HellBeastSpawnPoints, hellBeastScene]
 	
 	# Hell Bound
 	HellBoundWaveSpawnPointsAmount = HellBoundWaveSpawnPoints.size()
 	HellBoundSpawnPointsAmount = HellBoundSpawnPoints.size()
-	allInitialSpawnPoints[EnemyType.HellBound] = HellBoundSpawnPoints
+	allInitialSpawnPoints[EnemyType.HellBound] = [HellBoundSpawnPoints, hellBoundScene]
 	
 	# NightMare
 	NightMareWaveSpawnPointsAmount = NightMareWaveSpawnPoints.size()
 	NightMareSpawnPointsAmount = NightMareSpawnPoints.size()
-	allInitialSpawnPoints[EnemyType.NightMare] = NightMareSpawnPoints
+	allInitialSpawnPoints[EnemyType.NightMare] = [NightMareSpawnPoints, nightBorneScene]
 	
 	# Striker
 	StrikerWaveSpawnPointsAmount = StrikerWaveSpawnPoints.size()
 	StrikerSpawnPointsAmount = StrikerSpawnPoints.size()
-	allInitialSpawnPoints[EnemyType.Striker] = StrikerSpawnPoints
+	allInitialSpawnPoints[EnemyType.Striker] = [StrikerSpawnPoints, strikerScene]
 	
 	
 	nodes = get_tree().get_nodes_in_group("enemy_waves")
@@ -183,7 +188,6 @@ func _ready() -> void:
 	current_wave = 0
 	starting_nodes = get_tree().get_first_node_in_group("enemy_waves").get_child_count() + nodes_children
 	current_nodes = get_tree().get_first_node_in_group("enemy_waves").get_child_count() + nodes_children
-	position_to_next_wave()
 	respawn_player()
 
 func position_to_next_wave():
@@ -300,10 +304,25 @@ func respawn_player():
 		player.position = current_checkpoint.global_position
 		
 func instantiateAllInitialSpawnPoints():
-	pass
+	for type in allInitialSpawnPoints.keys():
+		if allInitialSpawnPoints[type][0].size() > 0:
+			for spawnPoint in allInitialSpawnPoints[type][0]:
+				if spawnPoint is Marker2D:
+					var instance = allInitialSpawnPoints[type][1].instantiate()
+					instance.global_position = spawnPoint.global_position
+					instance.z_index = 5
+					spawnPoint.get_parent().add_child(instance)
 			
 			
 func _process(delta: float) -> void:		
+	if not teleport_to_game_start and start_game_checkpoint != null:
+		if Input.is_action_just_pressed("start_game"):	
+			teleport_to_game_start = true
+			current_checkpoint = start_game_checkpoint
+			respawn_player()
+			
+	
+	# control wave spawn if in the area of the spawn waves
 	if wave_spawn_ended and spawnersAvailable:
 		nodes = get_tree().get_nodes_in_group("enemy_waves")
 		var count = 0
@@ -407,6 +426,8 @@ func _on_killzone_body_entered(body: Node2D) -> void:
 	if body is Player:
 		respawn_player()
 	else:
-		body.call_deferred("queue_free")
+		for child in body.get_children():
+			if child is Enemy_controller:
+				body.call_deferred("queue_free")
 		
 	

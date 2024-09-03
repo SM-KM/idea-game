@@ -3,7 +3,9 @@
 [ext_resource type="AudioStream" uid="uid://baouj4s8658ag" path="res://assets/GothicVania-town-files/Music/rpg_village02_loop.mp3" id="1_hhcl1"]
 
 [node name="MainMusic" type="AudioStreamPlayer2D"]
+process_mode = 3
 stream = ExtResource("1_hhcl1")
 volume_db = -16.98
 pitch_scale = 0.97
 autoplay = true
+max_distance = 1e+09
