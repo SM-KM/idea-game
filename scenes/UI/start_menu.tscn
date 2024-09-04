@@ -1,0 +1,63 @@
+[gd_scene load_steps=6 format=3 uid="uid://cj7tjumt2xfye"]
+
+[ext_resource type="Script" path="res://scripts/UI/start_menu.gd" id="1_3mcxq"]
+[ext_resource type="Texture2D" uid="uid://dck8pb0geibfk" path="res://assets/gothicvania church files/ENVIRONMENT/title-screen.png" id="1_fp2pb"]
+[ext_resource type="FontFile" uid="uid://g4pbjnt4ulgy" path="res://assets/fonts/PixelOperator8.ttf" id="2_6xsm1"]
+[ext_resource type="Texture2D" uid="uid://dll2p5add6ukx" path="res://assets/gothicvania church/assets/images/credits-text.png" id="3_jybjq"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_8qxdl"]
+_surfaces = [{
+"2d": true,
+"aabb": AABB(-192, -112, 0, 384, 224, 0),
+"attribute_data": PackedByteArray(0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63),
+"format": 34393296913,
+"index_count": 6,
+"index_data": PackedByteArray(3, 0, 0, 0, 1, 0, 1, 0, 2, 0, 3, 0),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 0, 64, 195, 0, 0, 224, 66, 0, 0, 64, 195, 0, 0, 224, 194, 0, 0, 64, 67, 0, 0, 224, 194, 0, 0, 64, 67, 0, 0, 224, 66)
+}]
+
+[node name="StartMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3mcxq")
+
+[node name="Sprite2D" type="MeshInstance2D" parent="."]
+position = Vector2(566, 313)
+scale = Vector2(3.22321, 3.22321)
+mesh = SubResource("ArrayMesh_8qxdl")
+texture = ExtResource("1_fp2pb")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(569, 593)
+scale = Vector2(1.86364, 1.86364)
+texture = ExtResource("3_jybjq")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -113.0
+offset_top = -135.0
+offset_right = 163.0
+offset_bottom = -95.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Button" type="Button" parent="GridContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_6xsm1")
+theme_override_font_sizes/font_size = 24
+text = "Start Game
+"
+
+[connection signal="pressed" from="GridContainer/Button" to="." method="_on_button_pressed"]

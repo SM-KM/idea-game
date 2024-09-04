@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://de1ndv5w5j5no"]
+
+[ext_resource type="Script" path="res://scripts/Items/boss_drop.gd" id="1_bdyc8"]
+[ext_resource type="Texture2D" uid="uid://dhrrgkyctg4c0" path="res://assets/items/boss_drop.png" id="2_xwed7"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wmfjc"]
+radius = 4.0
+height = 19.799
+
+[node name="BossDrop" type="Area2D" groups=["loot"]]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_bdyc8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = -0.784744
+shape = SubResource("CapsuleShape2D_wmfjc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_xwed7")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
+[connection signal="finished" from="AudioStreamPlayer2D" to="." method="_on_audio_stream_player_2d_finished"]

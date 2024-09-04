@@ -1,4 +1,4 @@
-[gd_scene load_steps=123 format=3 uid="uid://cwbjbjkjrm1k6"]
+[gd_scene load_steps=125 format=3 uid="uid://cwbjbjkjrm1k6"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_qnwkt"]
 [ext_resource type="Script" path="res://scripts/Util/power_up_visual_effect.gd" id="2_nlxkt"]
@@ -98,6 +98,8 @@
 [ext_resource type="PackedScene" uid="uid://ontmvpbad3o2" path="res://scenes/UI/gui.tscn" id="96_4mh4c"]
 [ext_resource type="PackedScene" uid="uid://clv1cyi7f5oo" path="res://scenes/Util/camera.tscn" id="96_817tp"]
 [ext_resource type="PackedScene" uid="uid://67a08rcoks37" path="res://scenes/UI/paused_menu.tscn" id="98_17kg3"]
+[ext_resource type="PackedScene" uid="uid://cj7tjumt2xfye" path="res://scenes/UI/start_menu.tscn" id="98_lnw5s"]
+[ext_resource type="Script" path="res://scripts/Player/audio_controller.gd" id="100_8yn8l"]
 
 [sub_resource type="Animation" id="Animation_3klqm"]
 length = 0.001
@@ -1889,7 +1891,13 @@ editor_draw_limits = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
+[node name="StartMenu" parent="CanvasLayer" instance=ExtResource("98_lnw5s")]
+
 [node name="PausedMenu" parent="CanvasLayer" instance=ExtResource("98_17kg3")]
+
+[node name="AudioController" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("100_8yn8l")
 
 [connection signal="area_entered" from="GrabArea" to="." method="_on_grab_area_area_entered"]
 [connection signal="area_entered" from="CollectArea" to="." method="_on_collect_area_area_entered"]

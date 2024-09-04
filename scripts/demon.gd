@@ -13,7 +13,7 @@ func _physics_process(delta: float) -> void:
 	
 	if enemy_controller.body_entered_awareness_zone:
 		enemy_controller.followPlayer(delta, self)
-		sprite.flipped = not(enemy_controller.enemyFlipped)
+		sprite.flipped = enemy_controller.enemyFlipped
 			
 	if enemy_controller.body_entered_attack_zone:
 		animateDependingOnFlippedState("attack", "attack_left")

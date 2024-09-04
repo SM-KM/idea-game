@@ -23,7 +23,7 @@ func _physics_process(delta: float) -> void:
 		self.owner.queue_free()
 	
 	if enemy_controller.body_entered_awareness_zone:
-		sprite.flip_h = not(enemy_controller.enemyFlipped)
+		sprite.flip_h = enemy_controller.enemyFlipped
 		if !animation_player.current_animation in ignoreRun:	
 			animation_player.play("run")
 			

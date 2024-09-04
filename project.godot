@@ -48,6 +48,8 @@ nightmare_wsp=""
 nightmare_sp=""
 striker_wsp=""
 striker_sp=""
+audio_controller=""
+boss=""
 
 [input]
 

@@ -94,6 +94,10 @@ var regenCooldownStarted: bool
 var PowerUpActive: String
 var activeEffects: Dictionary
 
+# bosses
+@export var boss: Boss
+var finishedFight: bool = false
+
 # ui events
 var teleport_to_game_start: bool = false
 
@@ -190,15 +194,14 @@ func _ready() -> void:
 	current_nodes = get_tree().get_first_node_in_group("enemy_waves").get_child_count() + nodes_children
 	respawn_player()
 
-func position_to_next_wave():
-	if current_nodes == starting_nodes and spawnersAvailable:
+func position_to_next_wave():	
+	if current_nodes == starting_nodes and spawnersAvailable and finishedFight == false:
 		if current_wave != 0:
 			moving_to_next_wave = true
 		wave_spawn_ended = false
 		current_wave += 1
 		print(current_wave)
-		prepare_spawn(EnemyType.BurningGhoul, 0, BurningGhoulWaveSpawnPointsAmount)
-		prepare_spawn(EnemyType.NightBorne, 0, NightBorneWaveSpawnPointsAmount)
+		prepare_spawn(EnemyType.NightBorne, 1, NightBorneWaveSpawnPointsAmount)
 
 func prepare_spawn(type: EnemyType, multiplier: float, mob_spawns: int):
 	var mob_amount = float(current_wave) * multiplier
@@ -207,6 +210,16 @@ func prepare_spawn(type: EnemyType, multiplier: float, mob_spawns: int):
 	spawn_type(type, mob_spawn_rounds, mob_wait_time)
 
 func spawn_type(type, mob_spawn_rounds, mob_wait_time):
+	if type == EnemyType.Ghost:	
+		if mob_spawn_rounds >= 1 and GhostWaveSpawnPointsAmount > 0:
+			for i in mob_spawn_rounds:
+				for spawnIndex in range(0, GhostWaveSpawnPointsAmount):
+					var ghost = ghostScene.instantiate()
+					ghost.global_position = GhostWaveSpawnPoints[spawnIndex].global_position
+					GhostWaveSpawnPoints[spawnIndex].add_child(ghost)
+				mob_spawn_rounds -= 1
+				await get_tree().create_timer(mob_wait_time).timeout
+	
 	if type == EnemyType.BurningGhoul:	
 		if mob_spawn_rounds >= 1 and BurningGhoulWaveSpawnPointsAmount > 0:
 			for i in mob_spawn_rounds:
@@ -251,7 +264,7 @@ func spawn_type(type, mob_spawn_rounds, mob_wait_time):
 		if mob_spawn_rounds >= 1 and FireSkullWaveSpawnPointsAmount > 0:
 			for i in mob_spawn_rounds:
 				for spawnIndex in range(0, FireSkullWaveSpawnPointsAmount):
-					var fireSkull = demonScene.instantiate()
+					var fireSkull = fireSkullScene.instantiate()
 					fireSkull.global_position = FireSkullWaveSpawnPoints[spawnIndex].global_position
 					FireSkullWaveSpawnPoints[spawnIndex].add_child(fireSkull)
 				mob_spawn_rounds -= 1
@@ -261,7 +274,7 @@ func spawn_type(type, mob_spawn_rounds, mob_wait_time):
 		if mob_spawn_rounds >= 1 and HellBeastWaveSpawnPointsAmount > 0:
 			for i in mob_spawn_rounds:
 				for spawnIndex in range(0, HellBeastWaveSpawnPointsAmount):
-					var hellBeast = demonScene.instantiate()
+					var hellBeast = hellBeastScene.instantiate()
 					hellBeast.global_position = HellBeastWaveSpawnPoints[spawnIndex].global_position
 					HellBeastWaveSpawnPoints[spawnIndex].add_child(hellBeast)
 				mob_spawn_rounds -= 1
@@ -271,7 +284,7 @@ func spawn_type(type, mob_spawn_rounds, mob_wait_time):
 		if mob_spawn_rounds >= 1 and HellBoundWaveSpawnPointsAmount > 0:
 			for i in mob_spawn_rounds:
 				for spawnIndex in range(0, HellBoundWaveSpawnPointsAmount):
-					var hellBound = demonScene.instantiate()
+					var hellBound = hellBoundScene.instantiate()
 					hellBound.global_position = HellBoundWaveSpawnPoints[spawnIndex].global_position
 					HellBoundWaveSpawnPoints[spawnIndex].add_child(hellBound)
 				mob_spawn_rounds -= 1
@@ -281,7 +294,7 @@ func spawn_type(type, mob_spawn_rounds, mob_wait_time):
 		if mob_spawn_rounds >= 1 and NightMareWaveSpawnPointsAmount > 0:
 			for i in mob_spawn_rounds:
 				for spawnIndex in range(0, NightMareWaveSpawnPointsAmount):
-					var nightMare = demonScene.instantiate()
+					var nightMare = nightmareScene.instantiate()
 					nightMare.global_position = NightMareWaveSpawnPoints[spawnIndex].global_position
 					NightMareWaveSpawnPoints[spawnIndex].add_child(nightMare)
 				mob_spawn_rounds -= 1
@@ -291,7 +304,7 @@ func spawn_type(type, mob_spawn_rounds, mob_wait_time):
 		if mob_spawn_rounds >= 1 and StrikerWaveSpawnPointsAmount > 0:
 			for i in mob_spawn_rounds:
 				for spawnIndex in range(0, StrikerWaveSpawnPointsAmount):
-					var striker = demonScene.instantiate()
+					var striker = strikerScene.instantiate()
 					striker.global_position = StrikerWaveSpawnPoints[spawnIndex].global_position
 					StrikerWaveSpawnPoints[spawnIndex].add_child(striker)
 				mob_spawn_rounds -= 1
@@ -315,8 +328,8 @@ func instantiateAllInitialSpawnPoints():
 			
 			
 func _process(delta: float) -> void:		
-	if not teleport_to_game_start and start_game_checkpoint != null:
-		if Input.is_action_just_pressed("start_game"):	
+	if Input.is_action_just_pressed("start_game"):
+		if teleport_to_game_start == false and start_game_checkpoint != null:
 			teleport_to_game_start = true
 			current_checkpoint = start_game_checkpoint
 			respawn_player()
@@ -391,7 +404,7 @@ func activatePowerUp(powerUpName: String, duration: float):
 		addActiveEffect(powerUpName, texture)
 		PowerUpActive = powerUpName
 		playerSpeed += 80
-		playerJumpVelocity = -500.0
+		playerJumpVelocity = -410.0
 		await get_tree().create_timer(duration).timeout
 		PowerUpActive = ""
 		resetMovementValues()
@@ -422,12 +435,5 @@ func removeFromActiveEffects(powerUpName: String):
 	print(effectSprites)
 	
 
-func _on_killzone_body_entered(body: Node2D) -> void:
-	if body is Player:
-		respawn_player()
-	else:
-		for child in body.get_children():
-			if child is Enemy_controller:
-				body.call_deferred("queue_free")
 		
 	

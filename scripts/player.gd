@@ -8,12 +8,13 @@ class_name Player
 @onready var regen_cooldown: Timer = $RegenCooldown
 @onready var stamina_cooldown: Timer = $StaminaCooldown
 @onready var camera: Camera = $Camera
+@onready var audio_controller: AudioStreamPlayer2D = %AudioController
 
 var speedUpdated: bool = false
 var lastFlippedValue = false
 
 var ignoreIdle = ["kick", "kick_left", "punch",  "punch_left", "hurt"]
-var ignoreWalk = ["crouch", "crouch_kick", "crouch_kick_left", "hurt"]
+var ignoreWalk = ["crouch", "crouch_kick", "crouch_kick_left", "hurt", "kick", "kick_left"]
 var ignoreCrouch = ["crouch_kick", "crouch_kick_left", "hurt"]
 var ignoreJump = ["flykick", "flykick_left", "hurt"]
 
@@ -67,11 +68,13 @@ func _physics_process(delta: float) -> void:
 	
 	if is_on_floor():
 		if Input.is_action_just_released("kick") and GameManager.stamina >= GameManager.kickStaminaCost:
+			audio_controller.playKickAudio()
 			GameManager.ReduceStamina(GameManager.kickStaminaCost)
 			stamina_cooldown.start(GameManager.staminaCooldown)
 			animateDependingOnFlippedState("kick_left", "kick")
 				
 		if Input.is_action_just_released("punch") and GameManager.stamina >= GameManager.punchStaminaCost:
+			audio_controller.playPunchAudio()
 			GameManager.ReduceStamina(GameManager.punchStaminaCost)
 			stamina_cooldown.start(GameManager.staminaCooldown)
 			animateDependingOnFlippedState("punch_left", "punch")
@@ -125,6 +128,7 @@ func animateDependingOnFlippedState(right, left):
 		
 func animatePlayerHurt():	
 	animation_player.play("hurt")
+	audio_controller.playHurt()
 	await get_tree().create_timer(0.2).timeout
 	animation_player.play("idle")
 

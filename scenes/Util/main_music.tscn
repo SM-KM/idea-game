@@ -1,11 +1,11 @@
 [gd_scene load_steps=2 format=3 uid="uid://b7pmvu3vjypke"]
 
-[ext_resource type="AudioStream" uid="uid://baouj4s8658ag" path="res://assets/GothicVania-town-files/Music/rpg_village02_loop.mp3" id="1_hhcl1"]
+[ext_resource type="AudioStream" uid="uid://bnqra8clgfveb" path="res://assets/music.mp3" id="1_njxuu"]
 
 [node name="MainMusic" type="AudioStreamPlayer2D"]
 process_mode = 3
-stream = ExtResource("1_hhcl1")
-volume_db = -16.98
+stream = ExtResource("1_njxuu")
+volume_db = -19.033
 pitch_scale = 0.97
 autoplay = true
 max_distance = 1e+09

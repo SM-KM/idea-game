@@ -23,6 +23,10 @@ var enemyFlipped: bool
 var currentEnemyInstance: Node2D
 var global_position_enemy: Vector2
 var is_attacking: bool = false
+var audio_controller: AudioStreamPlayer2D
+
+func _ready() -> void:
+	audio_controller = get_tree().get_first_node_in_group("audio_controller")
 
 func handleEnemyDead(animation_player, awaitTimeAnimation, enemyParent, animation, enemy):
 		if enemyHealth <= 0:
@@ -67,6 +71,7 @@ func handlePlayerHitOnEnemy(animation_player: AnimationPlayer, animation: String
 func reduceEnemyHealth(amount):
 	if enemyHealth > 0:
 		enemyHealth -= amount
+		audio_controller.playHurt()
 		spawnDamageIndicator(amount)
 		spawnBloodOnHit()
 		
@@ -109,9 +114,10 @@ func followPlayer(delta, enemy):
 			enemy.velocity.y = sign(enemyDirection.y) * enemySpeed
 		
 		enemy.velocity.x = sign(enemyDirection.x) * enemySpeed	
-		if enemyDirection.x < 0 and is_attacking == false:
+		var tolerance = 0.5
+		if enemyDirection.x < 0 and enemyDirection.x > -tolerance and is_attacking == false:
 			enemyFlipped = true
-		elif enemyDirection.x > 0:
+		elif enemyDirection.x > 0 and enemyDirection.x > tolerance:
 			enemyFlipped = false
 			
 		enemy.move_and_slide()
