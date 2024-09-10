@@ -29,14 +29,14 @@ grow_vertical = 2
 script = ExtResource("1_3mcxq")
 
 [node name="Sprite2D" type="MeshInstance2D" parent="."]
-position = Vector2(566, 313)
-scale = Vector2(3.22321, 3.22321)
+position = Vector2(951.715, 538)
+scale = Vector2(5.23214, 5.23214)
 mesh = SubResource("ArrayMesh_8qxdl")
 texture = ExtResource("1_fp2pb")
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
-position = Vector2(569, 593)
-scale = Vector2(1.86364, 1.86364)
+position = Vector2(953, 83)
+scale = Vector2(2.97728, 2.97727)
 texture = ExtResource("3_jybjq")
 
 [node name="GridContainer" type="GridContainer" parent="."]
@@ -46,17 +46,17 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -113.0
-offset_top = -135.0
-offset_right = 163.0
-offset_bottom = -95.0
+offset_left = -143.0
+offset_top = -161.0
+offset_right = 133.0
+offset_bottom = -121.0
 grow_horizontal = 2
 grow_vertical = 0
 
 [node name="Button" type="Button" parent="GridContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_6xsm1")
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 32
 text = "Start Game
 "
 

@@ -1883,10 +1883,11 @@ shape = SubResource("RectangleShape2D_qjrp6")
 debug_color = Color(0.289197, 0.608983, 0.462891, 0.42)
 
 [node name="GUI" parent="." instance=ExtResource("96_4mh4c")]
-position = Vector2(-221, -138)
+position = Vector2(-208, -129)
 scale = Vector2(1.52679, 1.52679)
 
 [node name="Camera" parent="." instance=ExtResource("96_817tp")]
+zoom = Vector2(3.5, 3.5)
 editor_draw_limits = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

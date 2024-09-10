@@ -5,10 +5,9 @@ extends Node2D
 
 func _ready() -> void:
 	GameManager.instantiateAllInitialSpawnPoints()
-	wave_counter.text = "Wave " + str(GameManager.current_wave)
 	
 func _process(delta: float) -> void:
-	pass
+	wave_counter.text = "Wave " + str(GameManager.current_wave)
 	
 func _on_killzone_body_entered(body: Node2D) -> void:
 	if body is Player:

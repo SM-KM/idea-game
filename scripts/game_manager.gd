@@ -194,14 +194,28 @@ func _ready() -> void:
 	current_nodes = get_tree().get_first_node_in_group("enemy_waves").get_child_count() + nodes_children
 	respawn_player()
 
+func finishFight():
+	var waveSpawnersParent = get_tree().get_first_node_in_group("enemy_waves")
+	for c in waveSpawnersParent.get_children():
+		for spawn in c.get_children():
+			for enemy in c.get_children():
+				enemy.visible = false
+
 func position_to_next_wave():	
-	if current_nodes == starting_nodes and spawnersAvailable and finishedFight == false:
+	if current_nodes == starting_nodes and spawnersAvailable and finishedFight == false: 	
+		if finishedFight:
+			return
+		
 		if current_wave != 0:
 			moving_to_next_wave = true
 		wave_spawn_ended = false
 		current_wave += 1
 		print(current_wave)
 		prepare_spawn(EnemyType.NightBorne, 1, NightBorneWaveSpawnPointsAmount)
+		prepare_spawn(EnemyType.BurningGhoul, 4, BurningGhoulWaveSpawnPointsAmount)
+		prepare_spawn(EnemyType.Ghost, 2, GhostWaveSpawnPointsAmount)
+		prepare_spawn(EnemyType.Demon, 1, DemonWaveSpawnPointsAmount)
+		prepare_spawn(EnemyType.NightMare, 1, NightMareWaveSpawnPointsAmount)
 
 func prepare_spawn(type: EnemyType, multiplier: float, mob_spawns: int):
 	var mob_amount = float(current_wave) * multiplier
@@ -209,14 +223,14 @@ func prepare_spawn(type: EnemyType, multiplier: float, mob_spawns: int):
 	var mob_spawn_rounds = mob_amount / mob_spawns
 	spawn_type(type, mob_spawn_rounds, mob_wait_time)
 
-func spawn_type(type, mob_spawn_rounds, mob_wait_time):
+func spawn_type(type, mob_spawn_rounds, mob_wait_time):	
 	if type == EnemyType.Ghost:	
 		if mob_spawn_rounds >= 1 and GhostWaveSpawnPointsAmount > 0:
 			for i in mob_spawn_rounds:
 				for spawnIndex in range(0, GhostWaveSpawnPointsAmount):
 					var ghost = ghostScene.instantiate()
-					ghost.global_position = GhostWaveSpawnPoints[spawnIndex].global_position
 					GhostWaveSpawnPoints[spawnIndex].add_child(ghost)
+					ghost.global_position = GhostWaveSpawnPoints[spawnIndex].global_position
 				mob_spawn_rounds -= 1
 				await get_tree().create_timer(mob_wait_time).timeout
 	
@@ -225,8 +239,8 @@ func spawn_type(type, mob_spawn_rounds, mob_wait_time):
 			for i in mob_spawn_rounds:
 				for spawnIndex in range(0, BurningGhoulWaveSpawnPointsAmount):
 					var burningGhoul = burningGhoulScene.instantiate()
-					burningGhoul.global_position = BurningGhoulWaveSpawnPoints[spawnIndex].global_position
 					BurningGhoulWaveSpawnPoints[spawnIndex].add_child(burningGhoul)
+					burningGhoul.global_position = BurningGhoulWaveSpawnPoints[spawnIndex].global_position
 				mob_spawn_rounds -= 1
 				await get_tree().create_timer(mob_wait_time).timeout
 	
@@ -235,8 +249,8 @@ func spawn_type(type, mob_spawn_rounds, mob_wait_time):
 			for i in mob_spawn_rounds:
 				for spawnIndex in range(0, NightBorneWaveSpawnPointsAmount):
 					var nightBorne = nightBorneScene.instantiate()
-					nightBorne.global_position = NightBorneWaveSpawnPoints[spawnIndex].global_position
 					NightBorneWaveSpawnPoints[spawnIndex].add_child(nightBorne)
+					nightBorne.global_position = NightBorneWaveSpawnPoints[spawnIndex].global_position
 				mob_spawn_rounds -= 1
 				await get_tree().create_timer(mob_wait_time).timeout
 				
@@ -255,8 +269,8 @@ func spawn_type(type, mob_spawn_rounds, mob_wait_time):
 			for i in mob_spawn_rounds:
 				for spawnIndex in range(0, DemonWaveSpawnPointsAmount):
 					var demon = demonScene.instantiate()
-					demon.global_position = DemonWaveSpawnPoints[spawnIndex].global_position
 					DemonWaveSpawnPoints[spawnIndex].add_child(demon)
+					demon.global_position = DemonWaveSpawnPoints[spawnIndex].global_position
 				mob_spawn_rounds -= 1
 				await get_tree().create_timer(mob_wait_time).timeout
 				
@@ -295,8 +309,8 @@ func spawn_type(type, mob_spawn_rounds, mob_wait_time):
 			for i in mob_spawn_rounds:
 				for spawnIndex in range(0, NightMareWaveSpawnPointsAmount):
 					var nightMare = nightmareScene.instantiate()
-					nightMare.global_position = NightMareWaveSpawnPoints[spawnIndex].global_position
 					NightMareWaveSpawnPoints[spawnIndex].add_child(nightMare)
+					nightMare.global_position = NightMareWaveSpawnPoints[spawnIndex].global_position
 				mob_spawn_rounds -= 1
 				await get_tree().create_timer(mob_wait_time).timeout
 				

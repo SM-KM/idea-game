@@ -34,7 +34,8 @@ func shoot():
 	instance.flipped = enemy_controller.enemyFlipped
 	instance.zdex = z_index
 	instance.enemy_controller = enemy_controller
-	projectiles.add_child.call_deferred(instance)
+	if is_instance_valid(projectiles):
+		projectiles.add_child(instance)
 	amountProjectiles += 1
 
 func _on_shoot_cooldown_timeout() -> void:

@@ -19,7 +19,9 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func _on_hitbox_body_entered(body: Node2D) -> void:
-	print(body)
+	if GameManager.player == null:
+		return 
+		
 	if body.is_in_group("player"):
 		body.animatePlayerHurt()
 		GameManager.ReducePlayerHealth(enemy_controller.enemyDamage)

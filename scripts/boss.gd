@@ -20,10 +20,13 @@ func _process(delta: float) -> void:
 	if GameManager.current_wave == death_wave and isDead == false:
 		GameManager.finishedFight = true
 		animation_player.play("dead")
+		await get_tree().create_timer(1).timeout
 		var instance = BOSS_DROP.instantiate()
 		add_child(instance)
 		instance.reparent(get_parent())
+		call_deferred("queue_free")
 		isDead = true
+	
 		
 
 func _on_awareness_area_body_entered(body: Node2D) -> void:
